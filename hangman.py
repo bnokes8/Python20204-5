@@ -6,12 +6,11 @@
 #Good Luck
 #imports
 import random
-#cap it so var cant change
-
+#capitalize it so var cant change
 HANGMAN = (
 '''
 ----------
-|         |
+|          |
 |
 |
 |
@@ -24,7 +23,7 @@ HANGMAN = (
 '''
 ----------
 |        |
-|       O
+|        O
 |
 |
 |
@@ -36,8 +35,8 @@ HANGMAN = (
 '''
 ----------
 |        |
-|       O
-|      -+-
+|        O
+|       -+-
 |        +
 |
 |
@@ -48,8 +47,8 @@ HANGMAN = (
 '''
 ----------
 |        |
-|       O
-|     / -+-
+|        O
+|      /-+-
 |        +
 |
 |
@@ -60,8 +59,8 @@ HANGMAN = (
 '''
 ----------
 |        |
-|       O
-|     / -+-\\
+|        O
+|      /-+-\\
 |        +
 |
 |
@@ -72,8 +71,8 @@ HANGMAN = (
 '''
 ----------
 |        |
-|       O
-|     / -+-\\
+|        O
+|      /-+-\\
 |        +
 |      |    
 |      |    
@@ -84,8 +83,8 @@ HANGMAN = (
 '''
 ----------
 |        |
-|       O
-|     / -+-\\
+|        O
+|      /-+-\\
 |        +
 |      |    |
 |      |    |
@@ -96,8 +95,8 @@ HANGMAN = (
 '''
 ----------
 |        |
-|       O
-|     / -+-\\
+|        O
+|      /-+-\\
 |        +
 |      |    |
 |      |    |
@@ -108,8 +107,8 @@ HANGMAN = (
 '''
 ----------
 |        |
-|       O
-|     / -+-\\
+|        O
+|      /-+-\\
 |        +
 |      |    |
 |      |    |
@@ -119,19 +118,74 @@ HANGMAN = (
 ''' )
 
 MAX_WRONG = len(HANGMAN)-1
-WORDS = ("OVERUSED","CLAM","GUAM","TAFFETA","PYTHON")
+WORDS = ("STATEMENT","LOOP","IDLE","SYNTAX","VARIABLE","LIST","TUPLE","INDENT","FUNCTIONS","DEBUGGING")
 word = random.choice(WORDS)
 #assignment
 #10 python related terms
 #be sure to define terms in comments
+
 wrong = 0
 used = []
-soFar = " _ "*len(word)
+soFar = "-"*len(word)
 
 print("Welcome to Hangman. Good Luck!")
-print()
-print(HANGMAN[wrong])
-print(soFar)
+replay = True
+while wrong < MAX_WRONG and soFar != word:
+    while replay == True:
+        print(HANGMAN[wrong])
+        print("\nYou've used the following letters:\n",used)
+        print("\nSo far, the word is:\n",soFar)
+
+        guess = input("\n\nEnter Your Guess: ")
+        guess = guess.upper()
+        print(guess)
+
+        while guess in used:
+            print("You've already guessed the letter",guess)
+            guess = input("\n\nEnter Your Guess: ")
+            guess = guess.upper()
+
+        used.append(guess)
+
+        if guess in word:
+            print("\nYes!",guess, "is in the word!")
+            
+            # create a new so_far to include guess in the correct location
+            new = ""
+            for i in range(len(word)):
+                if guess == word[i]:
+                    new+=guess
+                else:
+                    new+=soFar[i]
+            soFar = new
+
+        else:
+            print("\nSorry,",guess, "isn't in the word.")
+            wrong+=1
+            
+    if wrong == MAX_WRONG:
+        print(HANGMAN[wrong])
+        print("\nYou've been hung!")
+    else:
+        print("\nYou guess it!")
+
+
+
+
+
+    print("\nThe word was",word)
+    input("\n\nPress the enter key to go to the next screen")
+        replay = False
+    if input("\nDo you want to play again?: ") == "y" or "Y":
+        replay = True
+    else:
+        replay = False
+    
+    input("\nClick enter to leave")
+        
+
+
+        
 
 
 
@@ -149,6 +203,9 @@ print(soFar)
 ##    print(HANGMAN[x])
 ##    input()
 ##    x += 1
+
+
+
 
 
 
