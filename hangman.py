@@ -167,17 +167,8 @@ if wrong == MAX_WRONG:
     print("\nYou've been hung!")
 else:
     print("\nYou guessed it!")
-
-
-
-
-
     print("\nThe word was",word)
-    input("\n\nPress the enter key to go to the next screen")
-  
     
-
-
 input("\nClick enter to leave")
         
 
@@ -200,12 +191,6 @@ input("\nClick enter to leave")
 ##    print(HANGMAN[x])
 ##    input()
 ##    x += 1
-
-
-
-
-
-
 
 
 
