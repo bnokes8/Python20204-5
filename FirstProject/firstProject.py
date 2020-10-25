@@ -5,6 +5,8 @@
 #Revenge of the Rainbow Dragon
 #choose your own adventure
 #10/21
+
+### Brady Nokes code start
 print("Welocme to the game. \nWe hope you have fun. \nThe name of this book is The Revenge of the Rainbow Dragons by Rose Estes. \nGood luck.")#1
 # The choice and end pages will be marked in the name of the function with either an e or a c after the number. Make sure to capitalize the e or c
 # The "End" is an ending and doesnt siginfy the end of the game
@@ -13,7 +15,7 @@ print("Welocme to the game. \nWe hope you have fun. \nThe name of this book is T
 # The page numbers are sometimes skipped, those are pictures and I dont want any confusion with the code.
 # We are using def to make functions of the pages. Later on in the code we can call the functions when needed.
 def page1C() :
-    print('''Once upon a time a young wizard's apprentice named Jaimie
+    print('''\nOnce upon a time a young wizard's apprentice named Jaimie
 joined the master wizard, Pentegarn, in a war
 of wizards at Rainbow Castle. YOU are Jaimie and you control your own fate. Tricked
 into leaving Pentegarn's side, you must battle
@@ -33,8 +35,15 @@ page 105.
 dog blocking the door, turn to page 8. Whichever path you pick, you are sure to find
 adventure, as you turn the pages of
 REVENGE OF THE RAINBOW DRAGONS''')
+    choice1 = input("Page 12 or 8?: ")
+    if "12" in choice1:
+        page12C()
+    elif "8" in choice1:
+        page8()
+    else:
+        print("That is not recognized")
 def page5() :
-    print('''Foxes aren't supposed to fly, Jaimie,"
+    print('''\nFoxes aren't supposed to fly, Jaimie,"
 Fox says nervously, as he hovers in
 midair. "How about putting me down?
 Leave the flying to Featherface. I feel better on old terra extra-firma."
@@ -59,8 +68,10 @@ moving ahead nicely with your studies. I hadn't planned on your being able to li
 that we've been interrupted, I suppose we'd
 better see who's at the door." And he makes a
 small gesture with his hand.''')
+    input("Press enter to go to the next page")
+    page6()
 def page6() :
-    print('''Poof! A cloud of dust appears, then clears.
+    print('''\nPoof! A cloud of dust appears, then clears.
 Before you stands a travel-stained man, one
 hand raised as if knocking on a door.
 Lowering his hand, the traveler snaps, "Do
@@ -88,8 +99,10 @@ about, sir?" you ask worriedly.
 "Centuries ago, when I lost my kingdom to
 the Evil One, Rainbow Castle was in the
 hands ofthe forces of good," sighs Pentegarn,''')
+    input("Press enter to go to the next page")
+    page7C()
 def page7C() :
-    print('''Obviously, while I was in the Evil One's
+    print('''\nObviously, while I was in the Evil One's
 power, the balance changed. I think we had
 better meet with them. It is always best to be
 polite to one's neighbors."
@@ -110,8 +123,10 @@ can work out our problems with our
 neighbors." Turn to page 110.
 2) "Ignore them and don't go." Turn to
 page 83.''')
+    print("This part of he game is not accessible yet. Please start from the beggining")
+    page1C()
 def page8() :
-    print('''"I don't like the idea of climbing down from
+    print('''\n"I don't like the idea of climbing down from
 this tower," you say. "High places make me
 dizzy. And that fireplace stairway must be a
 trap. Otherwise we wouldn't have found it so
@@ -138,8 +153,10 @@ we'd make a nice dessert?" asks Fox.
 Even as he speaks, a few spiders leave the
 dog and move toward you. Jolted into action,
 you yell loudly and the three of you race through the door and slam it. You pound down a narrow, winding stairway, wild with relief at escaping the spiders,''')
+    input("Press enter to go to the next page.")
+    page10C()
 def page10C() :
-    print('''the dog, and the room—until Owl perches on
+    print('''\nthe dog, and the room—until Owl perches on
 your shoulder and says, "Perhaps a more
 moderate pace would be indicated by the multitude of dangers we have encountered in such
 a short span of time."
@@ -165,8 +182,12 @@ comes," says Owl.
 the awful noise, turn to page 49.
 2) If you want to slip into the open space in
 the wall, turn to page 76.''')
+    if "49" in input("Page 49 or page 76?: "):
+        page49()
+    else:
+        print("That is not recognized or it is not yet open")
 def page11E() :
-    print('''"I don't think they should go," you say. "I
+    print('''\n"I don't think they should go," you say. "I
 mean, there's so many of them. Why don't
 they stay here and we'll come back for them
 later?"
@@ -188,8 +209,10 @@ And so you sit, glowing in the dark, with
 claws, paws, and fingers crossed, hoping that
 this is not
 THE END	''')
+    input("You have reached the end of the game, press enter to start at the beginning...")
+    page1C()
 def page12C() :
-    print('''Fighting the cold, blowing wind and rain,
+    print('''\nFighting the cold, blowing wind and rain,
 you squeeze through the narrow window. Behind you, you hear the rug drop and the plop,
 plop, plop of falling spiders.
 "Do me a favor, kid—don't fall, huh," quavers Fox from inside your shirt. "I'm too gorgeous to become a grease spot."
@@ -210,8 +233,12 @@ longer feel the shrubbery, and the comforting
 solidity of the vine fades from your grasp. It feels as if you were drifting away on a misty
 cloud.
 Please turn to page 69.''')
+    input("Press enter to go to the next page")
+    #page69() but it is not coded in so it will tell them that the page is not in the game yet
+    print("The next page is not in the game yet, taking you back to the start")
+    page1C()
 def page13() :
-    print('''You continue urging Pentegarn to wake up,
+    print('''\nYou continue urging Pentegarn to wake up,
 while concentrating on the spell. Just as you
 are beginning to despair, Pentegarn moves.
 "Hooray! He's waking up!" yips Foxjoyfully.
@@ -240,8 +267,10 @@ and a good guy!"
 "What's he done with my rotten uncles?"
 screeches Imogene. "I've got to find out where
 my father is!"''')
+    input("Press enter to go to the next page")
+    page15()
 def page15() :
-    print('''"Here they are," says Pentegarn, holding
+    print('''\n"Here they are," says Pentegarn, holding
 out the cube, "and I'll find out the answer to
 that question if you promise not to kick me
 again."
@@ -270,8 +299,10 @@ eyes. The cube turns pink and then slowly
 pales, becoming clear. And then it is totally
 empty.
 "Wow!" you breathe in awe.''')
+    input("Press enter to go to the next page")
+    page16E()
 def page16E() :
-    print('''"How come they got you, Pentegarn? I figured you could take those guys with one hand
+    print('''\n"How come they got you, Pentegarn? I figured you could take those guys with one hand
 tied behind your back," says Fox.
 "They cheated, my furry friend. They
 brought a powerful magical amulet into the
@@ -288,8 +319,10 @@ return home," says Pentegarn.
 to do something besides levitate," you say. "If
 things keep going like this, Fm going to need
 it." THE END''')
+    input("You have reached the end of the game, press enter to start at the beginning...")
+    page1C()
 def page17() :
-    print('''"If these guys scare US—and we're kind of
+    print('''\n"If these guys scare US—and we're kind of
 used to them—imagine how those wizards upstairs will feel," snickers Fox.
 "The element of surprise would indeed be
 useful/' adds Owl.
@@ -318,8 +351,10 @@ nasty smile. Pulling the necklace out of his
 pocket with a quick motion, he places it around the messenger's neck and forces the
 broken ends together.
 "There! I can't think of anyone who de- serves it more, except perhaps my beloved uncles.''')
+    input("Press enter to go to the next page")
+    page18C()
 def page18C() :
-    print('''Enjoy your stay here. I hope you like
+    print('''\nEnjoy your stay here. I hope you like
 mushrooms.
 "
 The messenger stands dazed for a moment
@@ -334,8 +369,11 @@ We could tie a string on its leg and fol- low it." Turn to page 106.
 2) "Or maybe I could find a way out by
 sniffing," says Fox. "If Mouse Breath
 would help, I think we could do it." Turn to page 144.''')
+    #normally would take to either 106 or 144 but not in game yet so start at beginning
+    input("You have reached a part of the game that is not accessible yet, press enter to go to the beginning...")
+    page1C()
 def page19() :
-    print('''"Look, are we going to let a little noise scare us away?" you ask angrily.
+    print('''\n"Look, are we going to let a little noise scare us away?" you ask angrily.
 "Sounds good to me. I want to get out of
 here," says Fox, starting down the stairs.
 "I agree with Jaimie," says Owl. "I should
@@ -365,8 +403,10 @@ What are you doing here?"
 screams the little girl. "It certainly took you
 long enough to rescue me!" And she kicks you
 again, this time in the other leg.''')
+    input("Press enter to go to the next page")
+    page21()
 def page21() :
-    print('''"Ow! Stop that! How could I rescue you sooner? I didn't even know you were here and
+    print('''\n"Ow! Stop that! How could I rescue you sooner? I didn't even know you were here and
 needed rescuing. How did you get here?"
 "I don't know," wails the little girl. "My
 uncle brought me here. He said there was
@@ -391,8 +431,10 @@ in her room, the graveyard of the dolls. If we
 let her out, she'll probably break us into little bits too."
 "What is that mangy dog doing in my castle?" screams Imogene. "Get rid of it immediately. It clashes with my dress."
 You notice for the first time that Imogene is dressed entirely in pink. Long curls flow over her shoulders and freckles are sprinkled over her frowning face.''')
+    input("Press enter to go to the next page")
+    page22C()
 def page22C() :
-    print('''"Mangy dog?" snarls Fox with menace.
+    print('''\n"Mangy dog?" snarls Fox with menace.
 "Now, now, Fox. Control yourself," says
 Owl from his place on your shoulder. "Just
 consider this child as ill-tempered and simple,
@@ -416,10 +458,12 @@ Turn to page 53.
 2) "Or should we leave her here and go on
 by ourselves?" "If you do that you'll be
 very sorry," screeches Imogene. If this
-is your choice, turn to page 89.	'''
-)
+is your choice, turn to page 89.	''')
+    # would normally take them to either 53 or 89 but isnt coded in the game yet, start at beginning
+    input("You have reached a part of the game that is not accessible at this time, press enter to go to the beginning")
+    page1C()
 def page23E() :
-    print('''You go on but fear that you have made the
+    print('''\nYou go on but fear that you have made the
 wrong decision. Just as you are about to suggest turning around and going back, you see a glimmer of light ahead of you.
 "Look up ahead. It's a light! Hurry!" you
 cry, urging your friends forward.
@@ -447,8 +491,10 @@ you realizes that you are truly lost. And in the
 distance, the Will-o'-the-Wisp bobs up and
 down . . . and waits.
 THE END	''')
+    input("You have reached the end of the game, press enter to go back to the beginning and choose a different path...")
+    page1C()
 def page24() :
-    print('''"No, it couldn't be. It's got to be just a plain
+    print('''\n"No, it couldn't be. It's got to be just a plain
 old ring," you say, looking at it. Suddenly your eyes open wide. What you
 saw before as bright metal is now dull and
 gray—nothing more than a circle of poorly
@@ -475,8 +521,10 @@ all directions.
 "When did you learn that? And why didn't
 you use it before this?" sputters Fox.
 "I was saving this until we really needed it.''')
+    input("Press enter to go to the next page")
+    page25()
 def page25() :
-    print('''And we need to get back to Pentegarn. The
+    print('''\nAnd we need to get back to Pentegarn. The
 light will help."
 Avoiding further quarrel, you walk down
 the corridor revealed by the light.
@@ -505,8 +553,10 @@ flop go the slippers as they pad up to you and
 arrange themselves on either side ofyour feet. When you do not move, they jump up and
 down with a demanding thump.'''
 )
+    input("Press enter to go to the next page")
+    page26()
 def page26() :
-    print('''With a sidelong look at Fox and Owl, you
+    print('''\nWith a sidelong look at Fox and Owl, you
 step out of your own boots and into the big
 slippers, which promptly stride across the
 room, taking you with them.
@@ -534,8 +584,10 @@ from or what it contains, you raise it to your
 lips and swallow deeply.
 Hot, raging, burning fire courses down your
 throat and settles like a pool of lava in your stomach.''')
+    input("Press enter to go to the next page")
+    page27()
 def page27() :
-    print('''Tears pour down your cheeks and
+    print('''\nTears pour down your cheeks and
 you are sure you'll never breathe again. Then
 a soothing pressure pats you firmly on the
 back and rubs gently between your shoulder
@@ -566,8 +618,10 @@ for a member ofthe genus Canis, you are rather exceptional yourself. Hie."
 Wood Elves, hie, Wood Elves sing?"
 "Hummmm a few bars, friend Fox," says
 Owl, blearily.''')
+    input("\nPress enter to go to the next page")
+    page29()
 def page29() :
-    print('''By the tree and by the root
+    print('''\nBy the tree and by the root
 We really love to drink this fruit. Sharing's nice, it's really fine!
 But give me more, or I'll take thine.
 "Fine tenor voice, Fox. I myself sing baritone," says Owl, sagging comfortably against
@@ -593,8 +647,10 @@ neck, and drags him across the room. Stopping in front of an enormous open
 book, Fox drags a struggling, flapping Owl up
 into the book, wedges him into it, and slams
 the cover shut.''')
+    input("\nPress enter to go to the next page")
+    page30C()
 def page30C() :
-    print('''"There! I told you I'd do this. Now! While
+    print('''\n"There! I told you I'd do this. Now! While
 you're in there, learn some simple words or I'll never, ever let you out!"
 "Mfle! Pring!" squeaks Owl from between
 the pages of the dictionary.
@@ -618,8 +674,12 @@ with a little effort.
 "Be Wise," turn to page 135.
 3) If you want to read the spell that says
 "Be Powerful," turn to page 121.''')
+    #normally take them to one of the three choices but not in code yet, back to start
+    input("You have reached a part of the game that s not accessible, press enter to start from the beginning and make different choices")
+    page1C()
+    
 def page32E() :
-    print('''"He'll never wake up in time. If we're to be
+    print('''\n"He'll never wake up in time. If we're to be
 saved, I'd better try to use the cube myself,"
 you say nervously.
 "No! Jaimie! You haven't enough experience to use it yet," squawks Owl.
@@ -644,8 +704,10 @@ This one," he adds, tapping your rigid arm,
 best ... for us."
 THE END	'''
 )
+    input("You have reached the end of the game, press enter to go back to the beginning and make different choices...")
+    page1C()
 def page33() :
-    print('''"What happened? Where are we?" wails
+    print('''\n"What happened? Where are we?" wails
 Fox, opening his eyes.
 "We are in a narrow corridor dripping with
 slime and foul fluids. It appears to be the home
@@ -676,8 +738,10 @@ peculiar rainbow-colored cord that appears to
 be attached to the wall and gives off a faint
 glow," says Owl. "It stretches off to our left."'''
 )
+    input("\nPress enter to go to the next page")
+    page34C()
 def page34C() :
-    print('''Cautiously you let go of Fox's muzzle, hoping that he will not start howling again. But
+    print('''\nCautiously you let go of Fox's muzzle, hoping that he will not start howling again. But
 he only lifts his nose into the air and sniffs.
 "To our right I smell a strange, fungusy,
 foresty, earthy smell," says Fox. "And I hear
@@ -688,8 +752,10 @@ which way should we go?"
 2) If you want to find out what is moving
 about and smelling earthy, turn to
 page 68.''')
+    input("You have reached a part of the game where some of the story is in accessible, press enter to go to page 43 and continue your journey...")
+    page43C()
 def page35C() :
-    print('''"They scare me, Owl. Let's get out of here
+    print('''\n"They scare me, Owl. Let's get out of here
 while we still have a chance."
 With one last look at Fox, you start running,
 darting and weaving between the slow-moving
@@ -713,8 +779,10 @@ If you would like to make a
 different choice and try again,
 go back to page 82.	'''
 )
+    input("You have reached a part of the game that is not accessible, press enter to start at the beginning...")
+    page1C()
 def page36C() :
-    print('''Raising your hand, you pound on the heavy
+    print('''\nRaising your hand, you pound on the heavy
 door as hard as you can. The sound echoes in
 the distance, but no one comes. The shrill
 whining continues. Once again you pound on
@@ -723,8 +791,10 @@ the noise changes tone.
 "Well, now what do we do?" you ask.
 Turn back to page 48
 and make another choice.''')
+    input("Press enter to return to page 48 and make a different choice...")
+    page48C()
 def page37() :
-    print('''"Nothing good lives in dungeons on purpose," you say. "Let's try to fight our way
+    print('''\n"Nothing good lives in dungeons on purpose," you say. "Let's try to fight our way
 through them and head for that tunnel."
 "Yeah! We'll show them," says Fox.
 "I hope you are correct," says Owl, looking
@@ -753,8 +823,10 @@ Soft, spongy hands pull you forward. The
 smell of mushrooms is overpowering. You
 struggle but are held firm. Soon you find yourself being pushed into the mouth of the tunnel you saw earlier.'''
 )
+    input("\nPress enter to go to the next page")
+    page39()
 def page39() :
-    print('''Fox and Owl and more lumpy
+    print('''\nFox and Owl and more lumpy
 creatures crowd in behind you.
 Rich warm smells of cooking hang heavy on
 the air, and you realize how hungry you are. "What are these things?" hisses Fox.
@@ -784,8 +856,10 @@ dips a bowl into the cooking pot, fills it, and
 walks toward you.
 "Eat!" it commands, placing two more
 steaming bowls in front of Fox and Owl.''')
+    input("\nPress enter to go to the next page")
+    page40E()
 def page40E() :
-    print('''"You can't make us!" Fox barks bravely.
+    print('''\n"You can't make us!" Fox barks bravely.
 Chuckling, the creature says, "That is not
 necessary. You will be hungry soon and will
 eat. Then you will be just like us."
@@ -805,8 +879,10 @@ hunger will force you to eat, or if you will be
 able to hold out long enough to talk to the
 mushroom people and convince them to let you go.
 THE END	''')
+    input("You have reached the end of the game, press enter to return to the beginning and make different choices...")
+    page1C()
 def page41C() :
-    print('''"There's nothing wrong with being obvious,"
+    print('''\n"There's nothing wrong with being obvious,"
 says Fox. "Let's try the door."
 Hurriedly, you seize the doorknob and pull.
 Instantly a loud, crazed barking bursts forth,
@@ -831,9 +907,20 @@ tower, turn to page 12.
 2) If you want to try the hidden staircase,
 turn to page 105.
 3) If you want to try to fight the dog, turn
-to page 8.	''')
+to page 8.''')
+    page41C = input("Which page would you like to go to?: ")
+    if "12" in page41C:
+        page12C
+    elif "8" in page41C:
+        page8()
+    elif "105" in page41C:
+        input("You have reached a part of the game that is not accessible, press enter to return to the start")
+        page1C()
+    else:
+        input("That is not recognized, press enter to return to page 41 and try again")
+        page41C()
 def page42E() :
-    print('''"Looks fine to me. Fm hungry. Let's eat. What could possibly happen?" growls Fox as he leaps to the top of the table. He sticks his
+    print('''\n"Looks fine to me. Im hungry. Let's eat. What could possibly happen?" growls Fox as he leaps to the top of the table. He sticks his
 muzzle into a large chocolate cake and begins
 to eat hungrily.
 "Well, young one, one for all and all for
@@ -854,8 +941,10 @@ whole, a piece of candy arranges itself on a
 plate, and a half-empty glass refills itself. Then all is still, except for the thin, shrill noise
 that continues unheard.
 THE END	''')
+    input("You have reached the end of the game, press enter to return to the start and make different choices...")
+    page1C()
 def page43C() :
-    print('''The cord is velvety smooth to the touch.
+    print('''\nThe cord is velvety smooth to the touch.
 Although it glows with a soft, warm shimmery
 rainbow of colors, it sheds little real light. The
 darkness presses in on all sides.
@@ -880,8 +969,10 @@ to page 69.
 2) "I think we should follow the cord,"
 says Owl. If this is your choice, turn to
 page 72.''')
+    input("You have reached a part of the game that is not accessible, press enter to return to the beginning of the game")
+    page1C()
 def page44() :
-    print('''Settling down in the dense cloud cover, you
+    print('''\nSettling down in the dense cloud cover, you
 stare at the caves. All you can tell is that they
 are very large. A peculiar multicolored glow
 shimmers through the opening, but you do not
@@ -911,8 +1002,10 @@ cave, and disappear into its depths.
 "Truly astonishing," murmurs Owl.
 "I wouldn't have believed it if I hadn't seen it," you say.'''
 )
+    input("\nPress enter to go to the next page")
+    page46C()
 def page46C() :
-    print('''"Well, what should we do? They
+    print('''\n"Well, what should we do? They
 look pretty nice to me. Not at all like dragons
 I've read about. They're so beautiful, maybe
 they're friendly. We could try to talk to them."
@@ -927,10 +1020,21 @@ turn to page 150.
 2) If you want to fight the dragons, turn to
 page 65.
 3) If you want to go to the cloud castle, go
-on to the next page.'''
-)
+on to the next page.''')
+    page46C = input("Would you like to go to page 150, 65, or the next page, which is 47?: ")
+    if "105" in page46C:
+        input("You have reached a part aof the game that is not accessible yet, press enter to return to the beginning of the game and start over...")
+        page1C
+    elif "65" in page46C:
+        input("You have reached a part aof the game that is not accessible yet, press enter to return to the beginning of the game and start over...")
+        page1C()
+    elif "47" or "next" in page46C:
+        page47
+    else:
+        input("That is not recognized, press enter to retry this page")
+        page46C()
 def page47() :
-    print('''"If there's a castle, there must be people who
+    print('''\n"If there's a castle, there must be people who
 live in it and can help us. That's why I vote for
 the castle."
 "I'm with you," says Fox, leaping to his feet
@@ -959,8 +1063,10 @@ he flies off toward the castle.
 "I'll get you if it's the last thing I ever do,"
 yelps Fox. "Then we'll see who's got a faint
 heart!"''')
+    input("\nPress enter to go to the next page")
+    page48C()
 def page48C() :
-    print('''Smiling, you heave yourselfto your feet and
+    print('''\nSmiling, you heave yourselfto your feet and
 struggle after the barking Fox.
 At last you break out ofthe clinging cloud. A
 clean breeze blows softly about you. In front of
@@ -984,11 +1090,21 @@ must be in there. But how do we get in?"
 "I'd say we have three choices," says Owl.
 1) "Knock on the door." Turn to page 36.
 2) "Try to open it ourselves." Turn to page 132.
-3) "Or find another way in." Turn to page 140.'''
-
-)
+3) "Or find another way in." Turn to page 140.''')
+    page48C = input("Would you like to go to page 36, 132, or 140")
+    if "36" in page48C:
+        page36C()
+    elif "132" in page48C:
+        input("You have reached a part of the game that is not accessible yet, press enter to go to the beginning and start over")
+        page1C()
+    elif "140" in page48C:
+        input("You have reached a part of the game that is not accessible yet, press enter to go to the beginning and start over")
+        page1C()
+    else:
+        input("That is not recognized, press enter to retry")
+        page48C()
 def page49() :
-    print('''"Listen, we're not going to let a little noise
+    print('''\n"Listen, we're not going to let a little noise
 scare us, are we?" you ask.
 "I don't know about you, kid, but I'm con- vinced we shouldn't go in there. That noise is
 REAL convincing! I want nothing to do with
@@ -1014,10 +1130,12 @@ agrees Owl.
 "OOOOOOOOOO!" wails the noise from
 around the very next turn in the stairs.
 "Come on, you chickens," says Fox as he
-takes a deep breath and turns the corner. There is a sudden yelp and then silence.'''
-)
+takes a deep breath and turns the corner. There is a sudden yelp and then silence.''')
+    
+    input("\nPress enter to go to the next page")
+    page51E()
 def page51E() :
-    print('''Before your startled eyes, a misty white foxshaped figure floats through the air and up
+    print('''\nBefore your startled eyes, a misty white foxshaped figure floats through the air and up
 the stairs toward you.
 "Fox, a ghostly appearance is not appropriate at this time," Owl says sternly. "Whatever is making that noise could seize the opportunity to get us."
 "Won't happen, Fuzzface. I've already been
@@ -1042,6 +1160,63 @@ places," says Fox, and the three ofyou drift off
 down the stairs.
 THE END	''')
 
+page1C()
+veryEnd = input("You have reached the very end of the game, there is definitely nothing else beyond this point")
+if "dragon" in veryEnd:
+    print('''WWWWWWWWWNWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+WWWWWWWWWNWWNNWWWWWWWWWNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+WWWWWWWWNNWWNWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNNNNNNNNNNNNNN
+WWWWWWWWWWWWNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNNNNNNNNNNNNN
+WWWWWWWWWWWWNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMMMWWMMMMMWXNNNNXNNNNNNN
+WWWWWWWWWWWWNWMMMMMMWNXKXNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWWWNXXXNWMMMWXNNNNXNNNNNNN
+WWWWWWWWWWWWNWMMMMMMMWNX0OKNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNXKKXXWWMMMMMWXNNNNXNNNNNNN
+WWWWWWWWWWWWNWMMMMMMMMMMWKkk0NWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXKOO0XNWMMMMMMMMWXNNNNNNNNNNNN
+WWWWWWWNWWNWNWMMMMMMMMMMWWXOdx0NWWWMMMMMMMMMMMMMMMMMMMMMMWWMMMWWMNK0OkxxOXWMMMMMMMMMMMWXNNNNNNNNNNNN
+WWWWWWWNWWNWNWMMMMMMMMMMWWWNkodxOKNMMMMMMMMMMMMMMMMMMMMMMWWMWMWXOdlodxxOXWMMMMMMMMMMMMWXNNNNNNNNNNNN
+WWWWWWWNWWNWNWMMMMMMMMMMWWWW0ollllo0WWWMMMMMMMMMMMMMMMMMMWWMNOxolodxdokXWWWMMMMMMMMMMMWXNNNNNNNNNNNN
+WWWWWWWNWWNWNWMMMMMMMMMMMMWWKoccloc:oKNNWMMMMWWWMWWNNWWMN0Kkllllolcllok0KXXNWMMMMMMMMMWXNNNNNNNNNNNN
+NNNNNNNNWWNWNWMMMMMMMWWWNNXKx:,;;,,'.;lONNWWN0O0OkxxOKNWNk:;::clooxkOOxddxkO0KXWMMMMMMNXXNNNNNNNNNNN
+NNNNNNNNWWNWNWMMMMMWWNXK0Oxol:;,'..,c,.xX0XXkl:;;;;;;cdKNo.';:ldO0KXK0O0KXXNWNNWMMMMMMNXXNNNNNNNNXXX
+NNNNNNNNWWNWNWMMMMMMMMMMMWNKOkoc;;lkOc,k0k0Okl.'llc;',l0Nk;loclk00000KNNWWWWMMMMMMMMMMNXXNNNNNNNXXXX
+NNNNNNNWWWNWNWMMMMMMMMMMMWWN0dlodxk0O:lXOlcloc:kXxc,.,:kN0co0Odok00KKNWWWMMMMMMMMMMMMMWXXNNNNNNNXXXX
+WWWWWWWWWWNWNWMMMMMMMMMMMMWWKxxxk0O0xckXdcccldKWNd:'';:oKXl:kOOxoxKXXWMMMMMMMMMMMMMMMMWXXNNNNNXXXXXX
+NNNNNNNNWWNWNWMMMMMMMMMMMMMWKkkKX0Ox:dWNXXXNWWXOl'..,:ONWNxcllxO0OxxKNWMMMMMMMMMMMMMMMNXXNNNNNXXXXXX
+NNNNNNNNWWNWNWMMMMMMMMMMMMWKxOXXKOkx:oWWWWWWNKl'...,oxOWMWo,cloxO000O0XWMMMMMMMMMMMMMMNXXNNNNXXXXXXX
+NNNNNNNNNWNWNWMMMMMMMMMMMNOk0NNX0kdd::0WWWW0dc'.';:lOXXWWX:.:cldxkKNXK0KXWWWMMMMMMMMMMNXXNNXXXXXXXXX
+NNNNNNNNNNNNNWMMMMMMMMMWXKKNWWNX0xll;'coddOd'..';llo0NWWKd'.::clx0XWWWWNNNNWWWMMMMMMMMNXXNNXXXXXXXXX
+NNNNNNNNNNNNNWMMMMMMMMMWWWMMWWWWNKoc:,'..;oc..,;cllodkOxl;.,::lkXWWMWMWWWMMMMMMWMMMMMMNXXNNXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMWN0occc;,lo'..,,,::;;;;,,,.,:o0NMMMMMMMMMMMMMMMWMMMMWMNXXNXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMWWWMWKklcdOxl:.'lx:.'',;:xNWWMWWMMMMMMMMMMMMMMWWWMWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMWXK00NWXKKOxol;....'ckXNWWWMMMMMMMMMMMMWWWWWWMWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWW0xo:....,cccxOKNWWWMWWMWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWN0:.':,...,:,..,;oKWMWWMMWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKx;. ':'...;,....';dXWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMWKOd,.;;...:o,..';l::OWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMWWWWWWWWNXKKOkkkO0kc:ccc:,;ckXxcOWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMWWWKOkkOOOxdxOkOK0Okxdol:,...:xxlxNWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMWKxdxkO00OkO00OOxolododc'...',:cxXWWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMNd:oxdddolloolox0kooodO0kxxxxk0XWWWWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMNOooxOko'.',,'ckK0kdloxdoxOKNWWWWWWWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMWWWWNOdc,;dd:;xNKl;;;cc;,:,,lkXNXK0XWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMWWWWWNx:lO0kl:lO0;..,d0Ol.....;0KOO0XXNWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNXNMMMMMMMMMMMMMMMMMMWWWWNl.;xOOkOKWk'.,;dXNo. ...cOKXNNNNWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNXNMMMMMMMMMMMMMMMMMMMMMWWO,.dNWWWWWNk:,;ldo' ...,l0NWWWWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNXNMMMMMMMMMMMMMMMMMMMMMMWWO:;dXWWWWWNK0kd:...';cdKNWWWWWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNXNMMMMMMMMMMMMMMMMMWWMWWWWWXd:cdO0Okollcclodk0KKNWNNWWWWWWNNWWWWNNNNNNWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNXNMMMMMWWWWWWWWWWWWWWWWWWWWWWXOxddxxkO0KNWWWWWWWWWNNWWNNNNNNNNNNNNNNNNWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNXNMMMMMWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNNNNNNNNNNNNNNNNNNNNWWWWNXXXXXXXXXXXXX
+NNNNNNNNNNNNXNMMMMMMMMMMWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNWWNWNXXXXXXXXXXXXX
+NNNNNNNXNNNNXNWMMMMMMMMMMMMMMMMWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNNXXXXXXXXXXXXXX
+NNNNNNNNNNNNXNNWNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNXXXXXXXXXXXXXX
+NNNNNNNNNNNNNNNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+NNNNNNNNNNNNNNNNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX''')
+else:
+    retryOrNot = input("Do you want to retry?: ")
+    if "y" in retryOrNot or "Y" in retryOrNot:
+        page1C()
+    else:
+        print("Please close the game out.")
+### Brady Nokes code end
 
 
 
