@@ -7,7 +7,7 @@
 #10/21
 
 ### Brady Nokes code start
-print("Welocme to the game. \nWe hope you have fun. \nThe name of this book is The Revenge of the Rainbow Dragons by Rose Estes. \nGood luck.")#1
+print("Welocme to the game. \nWe hope you have fun. \nThe name of this book is 'The Revenge of the Rainbow Dragons by Rose Estes'. \nGood luck.")#1
 # The choice and end pages will be marked in the name of the function with either an e or a c after the number. Make sure to capitalize the e or c
 # The "End" is an ending and doesnt siginfy the end of the game
 # The functions without an E or C are regular pages and they will just move on ot hte next page. The others we will need to make and if/elif/else statement
