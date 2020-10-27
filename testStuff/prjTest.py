@@ -2,7 +2,6 @@
 #sean fullmer
 #aiden searle
 #Brady Nokes
-#Nathan Jackson
 #Revenge of the Rainbow Dragon
 #choose your own adventure
 #10/21
@@ -15,17 +14,12 @@ print("Welcome to the game. \nWe hope you have fun. \nThe name of this book is '
 # depending on the users choice
 # The page numbers are sometimes skipped, those are pictures and I dont want any confusion with the code.
 # We are using def to make functions of the pages. Later on in the code we can call the functions when needed.
-def reach_end():
-    while True:
-        endQ = input("You have reached the end of the game, would you like to retry?: ")
-        if "y" in endQ or "Y" in endQ:
-            page1C()
-            break
-        elif "n" in endQ or "N" in endQ:
-            end_screen()
-            break
-        else:
-            print("That is not recognized, please try again")
+def not_known():
+    notKnown = input("That is not recognized, type retry to retry or restart to go to the beginning")
+    if "retry" in notKnown:
+        continue
+    else:
+        page1C()
 def page1C() :
     print('''\nOnce upon a time a young wizard's apprentice named Jaimie
 joined the master wizard, Pentegarn, in a war
@@ -47,20 +41,16 @@ page 105.
 dog blocking the door, turn to page 8. Whichever path you pick, you are sure to find
 adventure, as you turn the pages of
 REVENGE OF THE RAINBOW DRAGONS''')
-    while True:
-        choice1 = input("Page 12 or 8?: ")
-        if "12" in choice1:
-            page12C()
-            break
-        elif "8" in choice1:
-            page8()
-            break
-        elif "leave" in choice1 or "Leave" in choice1:
-            leave()
-            break
-        else:
-            print("That is not recognized")
-            
+    choice1 = input("Page 12 or 8?: ")
+    if "12" in choice1:
+        page12C()
+    elif "8" in choice1:
+        page8()
+    elif "leave" in choice1 or "Leave" in choice1:
+        leave()
+    else:
+        print("That is not recognized")
+        page1()
 def page5() :
     print('''\nFoxes aren't supposed to fly, Jaimie,"
 Fox says nervously, as he hovers in
@@ -201,13 +191,11 @@ comes," says Owl.
 the awful noise, turn to page 49.
 2) If you want to slip into the open space in
 the wall, turn to page 76.''')
-    while True:
-        if "49" in input("Page 49 or page 76?: "):
-            page49()
-            break
-        else:
-            print("That is not recognized")
-        
+    if "49" in input("Page 49 or page 76?: "):
+        page49()
+    else:
+        print("That is not recognized")
+        page10C()
 def page11E() :
     print('''\n"I don't think they should go," you say. "I
 mean, there's so many of them. Why don't
@@ -231,7 +219,8 @@ And so you sit, glowing in the dark, with
 claws, paws, and fingers crossed, hoping that
 this is not
 THE END	''')
-    reach_end()
+    input("You have reached the end of the game, press enter to start at the beginning...")
+    page1C()
 def page12C() :
     print('''\nFighting the cold, blowing wind and rain,
 you squeeze through the narrow window. Behind you, you hear the rug drop and the plop,
@@ -256,7 +245,8 @@ cloud.
 Please turn to page 69.''')
     input("Press enter to go to the next page")
     #page69() but it is not coded in so it will tell them that the page is not in the game yet
-    
+    print("That is not recognized")
+    page12C()
 def page13() :
     print('''\nYou continue urging Pentegarn to wake up,
 while concentrating on the spell. Just as you
@@ -390,7 +380,8 @@ We could tie a string on its leg and fol- low it." Turn to page 106.
 sniffing," says Fox. "If Mouse Breath
 would help, I think we could do it." Turn to page 144.''')
     #normally would take to either 106 or 144 but not in game yet so start at beginning
-    
+    input("You have reached a part of the game that is not accessible yet, press enter to go to the beginning...")
+    page1C()
 def page19() :
     print('''\n"Look, are we going to let a little noise scare us away?" you ask angrily.
 "Sounds good to me. I want to get out of
@@ -479,8 +470,8 @@ by ourselves?" "If you do that you'll be
 very sorry," screeches Imogene. If this
 is your choice, turn to page 89.	''')
     # would normally take them to either 53 or 89 but isnt coded in the game yet, start at beginning
-    print("That is not recognized")
-    page22C()
+    input("You have reached a part of the game that is not accessible at this time, press enter to go to the beginning")
+    page1C()
 def page23E() :
     print('''\nYou go on but fear that you have made the
 wrong decision. Just as you are about to suggest turning around and going back, you see a glimmer of light ahead of you.
@@ -510,7 +501,8 @@ you realizes that you are truly lost. And in the
 distance, the Will-o'-the-Wisp bobs up and
 down . . . and waits.
 THE END	''')
-
+    input("You have reached the end of the game, press enter to go back to the beginning and choose a different path...")
+    page1C()
 def page24() :
     print('''\n"No, it couldn't be. It's got to be just a plain
 old ring," you say, looking at it. Suddenly your eyes open wide. What you
@@ -722,7 +714,6 @@ This one," he adds, tapping your rigid arm,
 best ... for us."
 THE END	'''
 )
-    reach_end()
     input("You have reached the end of the game, press enter to go back to the beginning and make different choices...")
     page1C()
 def page33() :
@@ -898,7 +889,8 @@ hunger will force you to eat, or if you will be
 able to hold out long enough to talk to the
 mushroom people and convince them to let you go.
 THE END	''')
-    reach_end()
+    input("You have reached the end of the game, press enter to return to the beginning and make different choices...")
+    page1C()
 def page41C() :
     print('''\n"There's nothing wrong with being obvious,"
 says Fox. "Let's try the door."
@@ -959,7 +951,8 @@ whole, a piece of candy arranges itself on a
 plate, and a half-empty glass refills itself. Then all is still, except for the thin, shrill noise
 that continues unheard.
 THE END	''')
-    reach_end()
+    input("You have reached the end of the game, press enter to return to the start and make different choices...")
+    page1C()
 def page43C() :
     print('''\nThe cord is velvety smooth to the touch.
 Although it glows with a soft, warm shimmery
@@ -1176,7 +1169,15 @@ your arm and soon engulfs your entire body.
 places," says Fox, and the three ofyou drift off
 down the stairs.
 THE END	''')
-    reach_end()
+    
+    end51 = input("Would you like to play again or leave?")
+    if "p" in end51 or "P" in end51:
+        page1C()
+    elif "leave" in end51 or "Leave" in end51:
+        end_screen()
+    else:
+        print("That is not a recognized input")
+
 def leave():
     print("Goodbye")
 
@@ -1191,13 +1192,11 @@ def end_screen() :
     leaveOrNot = input("Would you like to see the credits?: ")
     if "y" in leaveOrNot or "Y" in leaveOrNot:
         credit()
-    if leaveOrNot == "dragon" or leaveOrNot == "Dragon":
-        dragon_screen()
     else:
         leave()
-
+page1C()
 def dragon_screen():
-    veryEnd = input("You have reached the very end of the game, there is definitely nothing else beyond this point: ")
+    veryEnd = input("You have reached the very end of the game, there is definitely nothing else beyond this point")
     if "dragon" in veryEnd:
         print('''WWWWWWWWWNWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
     WWWWWWWWWNWWNNWWWWWWWWWNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
@@ -1246,10 +1245,138 @@ def dragon_screen():
     NNNNNNNNNNNNXNNWNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNXXXXXXXXXXXXXX
     NNNNNNNNNNNNNNNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     NNNNNNNNNNNNNNNNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX''')
-        input("There you go, press enter to leave.")
-        leave()
     else:
-        leave()
-page1C()
-input()
+        retryOrNot = input("Do you want to retry?: ")
+        if "y" in retryOrNot or "Y" in retryOrNot:
+            page1C()
+        else:
+            end_screen()
 ### Brady Nokes code end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# End ascii art for credit
+##print('''WWWWWWWWWNWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+##WWWWWWWWWNWWNNWWWWWWWWWNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+##WWWWWWWWNNWWNWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNNNNNNNNNNNNNN
+##WWWWWWWWWWWWNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNNNNNNNNNNNNN
+##WWWWWWWWWWWWNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMMMWWMMMMMWXNNNNXNNNNNNN
+##WWWWWWWWWWWWNWMMMMMMWNXKXNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWWWNXXXNWMMMWXNNNNXNNNNNNN
+##WWWWWWWWWWWWNWMMMMMMMWNX0OKNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNXKKXXWWMMMMMWXNNNNXNNNNNNN
+##WWWWWWWWWWWWNWMMMMMMMMMMWKkk0NWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXKOO0XNWMMMMMMMMWXNNNNNNNNNNNN
+##WWWWWWWNWWNWNWMMMMMMMMMMWWXOdx0NWWWMMMMMMMMMMMMMMMMMMMMMMWWMMMWWMNK0OkxxOXWMMMMMMMMMMMWXNNNNNNNNNNNN
+##WWWWWWWNWWNWNWMMMMMMMMMMWWWNkodxOKNMMMMMMMMMMMMMMMMMMMMMMWWMWMWXOdlodxxOXWMMMMMMMMMMMMWXNNNNNNNNNNNN
+##WWWWWWWNWWNWNWMMMMMMMMMMWWWW0ollllo0WWWMMMMMMMMMMMMMMMMMMWWMNOxolodxdokXWWWMMMMMMMMMMMWXNNNNNNNNNNNN
+##WWWWWWWNWWNWNWMMMMMMMMMMMMWWKoccloc:oKNNWMMMMWWWMWWNNWWMN0Kkllllolcllok0KXXNWMMMMMMMMMWXNNNNNNNNNNNN
+##NNNNNNNNWWNWNWMMMMMMMWWWNNXKx:,;;,,'.;lONNWWN0O0OkxxOKNWNk:;::clooxkOOxddxkO0KXWMMMMMMNXXNNNNNNNNNNN
+##NNNNNNNNWWNWNWMMMMMWWNXK0Oxol:;,'..,c,.xX0XXkl:;;;;;;cdKNo.';:ldO0KXK0O0KXXNWNNWMMMMMMNXXNNNNNNNNXXX
+##NNNNNNNNWWNWNWMMMMMMMMMMMWNKOkoc;;lkOc,k0k0Okl.'llc;',l0Nk;loclk00000KNNWWWWMMMMMMMMMMNXXNNNNNNNXXXX
+##NNNNNNNWWWNWNWMMMMMMMMMMMWWN0dlodxk0O:lXOlcloc:kXxc,.,:kN0co0Odok00KKNWWWMMMMMMMMMMMMMWXXNNNNNNNXXXX
+##WWWWWWWWWWNWNWMMMMMMMMMMMMWWKxxxk0O0xckXdcccldKWNd:'';:oKXl:kOOxoxKXXWMMMMMMMMMMMMMMMMWXXNNNNNXXXXXX
+##NNNNNNNNWWNWNWMMMMMMMMMMMMMWKkkKX0Ox:dWNXXXNWWXOl'..,:ONWNxcllxO0OxxKNWMMMMMMMMMMMMMMMNXXNNNNNXXXXXX
+##NNNNNNNNWWNWNWMMMMMMMMMMMMWKxOXXKOkx:oWWWWWWNKl'...,oxOWMWo,cloxO000O0XWMMMMMMMMMMMMMMNXXNNNNXXXXXXX
+##NNNNNNNNNWNWNWMMMMMMMMMMMNOk0NNX0kdd::0WWWW0dc'.';:lOXXWWX:.:cldxkKNXK0KXWWWMMMMMMMMMMNXXNNXXXXXXXXX
+##NNNNNNNNNNNNNWMMMMMMMMMWXKKNWWNX0xll;'coddOd'..';llo0NWWKd'.::clx0XWWWWNNNNWWWMMMMMMMMNXXNNXXXXXXXXX
+##NNNNNNNNNNNNNWMMMMMMMMMWWWMMWWWWNKoc:,'..;oc..,;cllodkOxl;.,::lkXWWMWMWWWMMMMMMWMMMMMMNXXNNXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMWN0occc;,lo'..,,,::;;;;,,,.,:o0NMMMMMMMMMMMMMMMWMMMMWMNXXNXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMWWWMWKklcdOxl:.'lx:.'',;:xNWWMWWMMMMMMMMMMMMMMWWWMWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMWXK00NWXKKOxol;....'ckXNWWWMMMMMMMMMMMMWWWWWWMWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWW0xo:....,cccxOKNWWWMWWMWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWN0:.':,...,:,..,;oKWMWWMMWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKx;. ':'...;,....';dXWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMMMMMMMMMWMMWKOd,.;;...:o,..';l::OWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMMMWWWWWWWWNXKKOkkkO0kc:ccc:,;ckXxcOWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMWWWKOkkOOOxdxOkOK0Okxdol:,...:xxlxNWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMWKxdxkO00OkO00OOxolododc'...',:cxXWWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMNd:oxdddolloolox0kooodO0kxxxxk0XWWWWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMNOooxOko'.',,'ckK0kdloxdoxOKNWWWWWWWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMMWWWWNOdc,;dd:;xNKl;;;cc;,:,,lkXNXK0XWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNMMMMMMMMMMMMMMMMMWWWWWNx:lO0kl:lO0;..,d0Ol.....;0KOO0XXNWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNXNMMMMMMMMMMMMMMMMMMWWWWNl.;xOOkOKWk'.,;dXNo. ...cOKXNNNNWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNXNMMMMMMMMMMMMMMMMMMMMMWWO,.dNWWWWWNk:,;ldo' ...,l0NWWWWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNXNMMMMMMMMMMMMMMMMMMMMMMWWO:;dXWWWWWNK0kd:...';cdKNWWWWWWWWWWWWWWWWWWWWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNXNMMMMMMMMMMMMMMMMMWWMWWWWWXd:cdO0Okollcclodk0KKNWNNWWWWWWNNWWWWNNNNNNWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNXNMMMMMWWWWWWWWWWWWWWWWWWWWWWXOxddxxkO0KNWWWWWWWWWNNWWNNNNNNNNNNNNNNNNWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNXNMMMMMWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNNNNNNNNNNNNNNNNNNNNWWWWNXXXXXXXXXXXXX
+##NNNNNNNNNNNNXNMMMMMMMMMMWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNWWNWNXXXXXXXXXXXXX
+##NNNNNNNXNNNNXNWMMMMMMMMMMMMMMMMWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNNXXXXXXXXXXXXXX
+##NNNNNNNNNNNNXNNWNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNXXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+##NNNNNNNNNNNNNNNNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX''')
