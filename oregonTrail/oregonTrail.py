@@ -98,6 +98,7 @@ def play():
   money,prof = char_creator(listOfProfs)
   print(money, prof)
   family_Setup("How many family members do you have?")
+  shop(money)
   
 
 
@@ -146,10 +147,111 @@ def get_good_number(question,low,high):
         number = input(question)
         if number.isnumeric() :
             number = int(number)
-            if number >=1 and number <= 8:
+            if number >=low and number <= high:
                 return number
         print ("not a good number")
 
+
+def shop(money):
+    ammo = 0
+    food = 0
+    oxen = 0
+    clothes = 0
+    parts = 0
+    bill = 0
+    items = ["Oxen","Food","Ammunition","Clothes","Wagon Parts","Check out"]
+    spentOnItems = [0.00,0.00,0.00,0.00,0.00,bill]
+    print("\nBefore leaving Independence you should buy Equipment and Supplies")
+    print(str.format("\nYou have {} in cash to make this trip",money))
+    print("\nRemember you can buy supplies along the way so you dont have to spend it all now")
+    input("\nPress enter to continue")
+    while True:
+        spentOnItems[len(spentOnItems)-1]-bill
+        print("Welcome to the Volcano General Store")
+        print("Here is a list of things you can buy")
+        print()
+        print("===================================================")
+        for i in range(len(items)):
+            print(str.format("\t{}:     {:20}     ${:.2f}",i+1,items[i],spentOnItems[i]))
+        print("===================================================")
+        print(str.format("Total Bill so far:     ${:.2f}",bill))
+        print(str.format("Total Funds available:     ${:.2f}",money-bill))
+        #call the number function
+        choice = get_good_number("What do you want to buy?: ",1,6)
+        
+        if choice == 1:#choice 1 is oxen 
+            bill -= spentOnItems[0]
+            oxen = 0
+            spentOnItems[0] = 0.00
+            print("""
+            There are 2 oxen in a yoke;
+            I recommend at least 3 yokes
+            I charge $40 a yoke""")
+            print(str.format("Total Bill so far:     ${:.2f}",bill))
+            answer = get_good_number("How many do you want to buy?: ",1,5)
+            cost = answer*40
+            bill += cost
+            oxen = answer * 2
+            spentOnItems[0] = cost
+            
+        if choice == 2:#choice 2 is food
+            bill -= spentOnItems[1]
+            food = 0
+            spentOnItems[1] = 0.00
+            print("""
+            I recommend that you take at least 200 pounds of food for each person in your family.
+            You'll need flower, sugar, bacon, and coffee, my price is 20 cents a pound.""")
+            print(str.format("Total Bill so far:     ${:.2f}",bill))
+            answer = get_good_number("How many pounds do you want to buy?: ",100,2500)
+            cost = answer*.20
+            bill += cost
+            food = answer
+            spentOnItems[1] = cost
+            
+        if choice == 3:
+            bill -= spentOnItems[2]
+            ammo = 0
+            spentOnItems[2] = 0.00
+            print("""
+            I sell ammunition in boxes of 20 bullets.
+            Each box costs $2.00""")
+            print(str.format("Total Bill so far:     ${:.2f}",bill))
+            answer = get_good_number("How many boxes do you want to buy?: ",1,250)
+            cost = answer*2
+            bill += cost
+            ammo = answer * 20
+            spentOnItems[2] = cost
+        if choice == 4:
+            bill -= spentOnItems[3]
+            clothes = 0
+            spentOnItems[3] = 0.00
+            print("""
+            You'll need warm clothing in the mountains. I recommend taking at least 2 sets of clothes per person.
+            Each set is $10.00.""")
+            print(str.format("Total Bill so far:     ${:.2f}",bill))
+            answer = get_good_number("How many sets do you want to buy?: ",1,15)
+            cost = answer*10.00
+            bill += cost
+            clothes = answer * 2
+            spentOnItems[3] = cost
+        if choice == 5:
+            pass
+        if choice == 6:
+            if bill < money:#checks to make sure they didnt over spend  
+                money = money-bill
+                print(str.format("Your total is ${}",bill))
+                print(str.format("You bought {} Oxen, {}lbs of Food, {} Bullets, {} Clothes.",oxen,food,ammo,clothes))
+                return oxen,food,ammo,clothes
+            else:
+                input("You've spent too much money, press enter to retry!")
+                oxen = 0
+                food = 0
+                ammo = 0
+                clothes = 0
+                bill = 0
+                cost = 0
+                spentOnItems = [0.00,0.00,0.00,0.00,0.00,bill]
+                
 
 
 
