@@ -28,7 +28,7 @@ the Unix epoch is 00:00:00 UTC on 1 January 1970"""
     current_hour = hours%24
 
     # set the time zone mt time
-    current_hour -= 6
+    current_hour -= 7
 
     # now lets figure out the Am pm tag and set this to a 12 hour clock not 24 hours
     if current_hour >= 12:
