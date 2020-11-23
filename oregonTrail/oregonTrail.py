@@ -3,6 +3,8 @@
 # title screen that shows creators and copyright
 
 # Function for the main menu. will ask the user what they want to do.
+import datetime
+import random
 def menu_options(options):
     index = 1
     for i in options:
@@ -70,7 +72,7 @@ better take the Barlow Road.''',
 '''\nIf for some reason you don't survive -- your wagon burns, or thieves steal your oxen, or you run out of provisions, die of Covid-19,
 don't give up! Try again... and again... and again utnil your name is up there with the pro's.''',
 #sixth page (credits)
-'''This game was re-made by:
+'''\nThis game was re-made by:
 	Abram and Brady''']
 
     
@@ -81,7 +83,7 @@ don't give up! Try again... and again... and again utnil your name is up there w
 
 
 def family_Setup(question):
-  wagonLeader = get_good_name("What is your name?")
+  wagonLeader = get_good_name("What is your name?: ")
   fam_list = []
   low = 2
   high = 7
@@ -97,7 +99,7 @@ def play():
   listOfProfs = ["Banker","Carpenter","Farmer","Learn the difference"]
   money,prof = char_creator(listOfProfs)
   print(money, prof)
-  family_Setup("How many family members do you have?")
+  family_Setup("How many family members do you have?: ")
   shop(money)
   
 
@@ -106,15 +108,15 @@ def char_creator(options):
   while True:
     choice = menu_options(options)
     if choice == 1:
-      money = 1600
+      money = 1600 #bankers make 1600, easy mode
       prof = "Banker"
       break
     if choice == 2:
-      money = 800
+      money = 800 #carpenters make 800, medium mode
       prof = "Carpenter"
       break
     if choice == 3:
-      money = 400
+      money = 400 #farmers make 400, hard mode
       prof = "Farmer"
       break
     if choice == 4:
@@ -150,7 +152,6 @@ def get_good_number(question,low,high):
             if number >=low and number <= high:
                 return number
         print ("not a good number")
-
 
 def shop(money):
     ammo = 0
@@ -251,12 +252,220 @@ def shop(money):
                 bill = 0
                 cost = 0
                 spentOnItems = [0.00,0.00,0.00,0.00,0.00,bill]
-                
+
+
+def travel (health, pace, weather):
+  if pace == normal:
+    mph = 2
+  if pace == slow:
+    mph = 1
+  if pace == fast:
+    mph = 4
+  if health == poor:
+    hours = 4
+  if health == fair:
+    hours = 6
+  if health == good:
+    hours = 8
+  if weather == hot:
+    # something 1
+    pass
+  if weather == cold:
+    # something .75
+    pass
+  if weather == rain:
+    # .5
+    pass
+  if weather == blizzard:
+    # 0
+    pass
+
+def change_rations(rations):
+  print("Your current rations are ", pace)
+  options = ["full", "half", "quarter"]
+  index = 1
+  for options in options:
+    print(str.format("{}        {} ",index, option))
+    index+=1
+  while True:
+    choice = int(input("Choose your rations"))
+    if choice == 1:
+      return "full"
+    elif choice == 2:
+      return "half"
+    elif choice == 3:
+      return "quarter"
+    else: 
+      print("Not an option")
 
 
 
+def change_rations():
+  pass
+def change_pace(pace):
+  print("Your current pace is ", pace)
+  options = ["slow", "normal", "fast"]
+  index = 1
+  for options in options:
+    print(str.format("{}        {} ",index, option))
+    index+=1
+  while True:
+    choice = int(input("Choose your pace"))
+    if choice == 1:
+      return "slow"
+    elif choice == 2:
+      return "normal"
+    elif choice == 3:
+      return "fast"
+    else: 
+      print("Not an option")
+pace = "normal"
+rations = "full"
+rations = change_rations()
+pace = change_pace(pace)
+print(pace)
 
 
+START_DATE = datetime.datetime(1848,3,1)
+currentDate = START_DATE
+hp = 100
+ox = shop(oxen)
+totalMiles = 2000
+food = shop(food)
+milesTraveled = 0
+rations = "full"
+healthCondtition = "good"
+weather = "cold"
+pace = "normal"
+famList = []
+
+def turn(ox,food,pace,weather,healthCondition,famList,rations,milesTraveled,totalMiles,hp,currentDate):
+    weather = random.choice(["hot","good","fair","fair","poor","windy","rain","blizzard"])
+
+    if hp >= 80:
+        healthCondition = "good"
+    elif hp < 80 and hp >= 50:
+        healthCondition = "fair"
+    else:
+        healthCondition = "poor"
+
+    if rations == "full":
+        rationsMod = 2
+    elif rations == "half":
+        rationsMod = 1
+    else:
+        rationsMod = .5
+
+    problem = random.choice([])
+
+    num = random.randint(1,100)
+    if num >= 90:
+        problem = random.choice(["a member of your party got lost",
+                                 "a member of your party got a snake bite",
+                                 "a member of your party got sick",
+                                 "an ox died"])
+    else:
+        problem = "None"
+
+    if problem == "a member of your party got lost":
+        lost = random.randint(1,7)
+        print("name got lost for",lost,"days")
+        currentDate += datetime.timedelta(days=lost)
+        food -= (len(famlist))*rationsMod*lost
+    elif problem == "a member of your party got a snake bite":
+        hp -= 50
+    elif problem == "a member of your party got sick":
+        hp -= 20
+    elif problem == "an ox died":
+        ox -= 1
+        food += 50
+    print(str.format("""
+   .....                                        ..'..                              ..',,,'..        
+..',;;;,,'...  ...                       ..'''',,;;;;,..                       ..',;;;;;;;;,,,'..   
+,;;,;;;;;,;;;,,,;,,...               ..',;;;;;,,;;;;;;;;,'..     ..''....',,'',,;;;;;;;;;;,;;;;;,'..
+;;;;;;;;;;;;;;;;;;;;;,,....'..   ..',;;;;;;;;;;;;;;;;;;;;;;,'..',;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,,',,;,,;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+''''''''''''''',,,''''.........'''''',,,''''''''''''',,;;;;;,,,,,,,,,,,,;;;;;;;;;;;;,,,''...'',,,;;;
+                                                      ........        ...............            ...
+ +-----------------------------+                                                                    
+ |Date:{:_>24}|                 
+ |Weather:{:_>21}|           ..'''''''''''..                         ..''''''.        
+ |Health:{:_>22}|          ,:ccccllllllllc::::,...  ......  ..,::::::clclllcc,.      
+ |Miles Travled:{:_>15}|         .cc'.;cccclccccccccclc'.;cllllc;.'ccccccccccccclcl;.      
+ |Miles To Go:{:_>17}|          .;c, .,:clcclclcclcclc'.clcccclc.'cccccccccccclll:.       
+ |Food:{:_>24}|           .cc.  .';cccclcclcclc'.clcccclc.'cccccccccccccc:.        
+ +-----------------------------+            ,:;.   'ccccccclcclc'.clcccclc.'cccccccccccccc'         
+                 ..                         .;c;.   ,ccclccccllc'.clcccllc.'cccccclccllcc,          
+          .,,. .'::.  ....                   .:c.   .clcccccclcc'.cccccclc.'cccccccccccc'           
+           .,:::cl,..',';c;:;;;;:;;;'.        ',.   .:cccccccccc..:cccccc:.'ccccccccccc:.           
+         .';clcccl,';;::ccccccccccccc:.       ....  ......,,,,'.  .............',,,,..','.          
+          ...';:;,,;cccllcclcclccccccc........'.''.',...',.,;',,. .,','',,,  .,'';,','.''.          
+                .;:clcclcccclllccccc:,.      ...',... .,'. ', .';. ..,',,.. .;. .,. .,,.            
+                 .'clcccc::;'.,:lclc.         ..''    ';...;;...;'   ''''   ,;..';,..';.            
+                  .cc,:c;..  .,cc,:c.                 .,'. ', .',.          .;. .,. .,,.            
+                .':c,..;l'   .';:;:c.                  .',',;','.            .,,';,',.              
+'..''.''''.'''.',:c:,'';:,''''',::::,'''''...'''''''''''',;;;;,''''''''''..'''';;;;;,'''.''''''''''.
+;;;;;;;;;;;;;;,;;:::;;;::;,,;;;;::;;;;;;;;;;;;;;;;;;;;;;;;;;;,;;;;;;;;;;;;;;;;;;,;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;,;::::;;;:;;;;;;;:::;;;;;;;;;;;;;;;;;;;;;;;;;,;;,;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
+;;;;;;;;;;;;;;;;;:::;;;::;;;;;;;::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,;;;;;;;;;;;;;;;;;
+""",date,weather,health,miles_travled,total_miles,food))
+    options = ["Continue on Trail",
+               "Check Supplies",
+               "Change Pace",
+               "Change Rations",
+               "Stop and Rest",
+               "Attempt to Trade",
+               "Hunt for Food"]
+    #will see what the user wants to do
+    while True:
+        menu_options("What would you like to do?")
+        if choice == 1:
+            if ox > 0:
+                milesTraveled = travel(pace,weather,healthCondition)
+                if food > 0:
+                    food -= (len(famList)+1)*rationsMod
+                else:
+                    hp -= 10*len(famList)
+                currentDate += datetime/timedelta(days=1)
+                totalMiles -= milesTraveled
+                break
+        elif choice == 2:
+            check_supplies()
+        elif choice == 3:
+            pace = change_pace(pace)
+            break
+        elif choice == 4:
+            rations = change_rations(rations)
+            break
+        elif choice == 5:
+            hp, daysRested = rest(hp,rations)
+            if food > 0:
+                food -= ((len(famList)+1)*rationsMod)*daysRested
+            else:
+                hp -= 10*len(famList)
+            currentDate += datetime.timedelta(days=daysRested)
+            break
+        elif choice == 6:
+            pass
+        elif choice == 7:
+            pass
+    if hp <=0:
+        print("A member of your family has died")
+        die = random.choice(famList)
+        famList.remove(die)
+        hp = 100
+        input("Press enter to continue")
+    if food < 0:
+        food = 0
+    if totalMiles < 0:
+        totalMiles = 0
+    return ox,food,pace,hp,food,weather,healthCondition,famList,rations,milesTraveled,totalMiles,currentDate
+
+    
+input()
+
+
+    
 
 
 
@@ -268,3 +477,10 @@ def shop(money):
   
 ##main game  
 title_screen()
+#game loop
+while totalMiles > 0 and len(famList) > 0 :
+    tox,food,pace,hp,food,weather,healthCondition,famList,rations,milesTraveled,totalMiles,currentDate = turn
+if totalMiles <=0:
+    print("Congrats you made it")
+else:
+    print("You and your family have died and are now being eaten by animals")
