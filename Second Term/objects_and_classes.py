@@ -16,7 +16,7 @@ class Car():
         else:
             self.top_speed = 65
         print("This car can drive")
-        print("It's top speed is "+x)
+        print("It's top speed is ",self.top_speed)
     
         
         
