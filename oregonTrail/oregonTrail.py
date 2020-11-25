@@ -29,13 +29,13 @@ def title_screen():
   \nOregon Trail by Abram and Brady
   \nCopyright Volcano Enterprises 2020
   \n
-#     # ####### #        #####     #    #     # ####### 
-#     # #     # #       #     #   # #   ##    # #     # 
-#     # #     # #       #        #   #  # #   # #     # 
-#     # #     # #       #       #     # #  #  # #     # 
- #   #  #     # #       #       ####### #   # # #     # 
-  # #   #     # #       #     # #     # #    ## #     # 
-   #    ####### #######  #####  #     # #     # #######\n''')
+    #     # ####### #        #####     #    #     # ####### 
+    #     # #     # #       #     #   # #   ##    # #     # 
+    #     # #     # #       #        #   #  # #   # #     # 
+    #     # #     # #       #       #     # #  #  # #     # 
+    #   #  #     # #       #       ####### #   # # #     # 
+    # #   #     # #       #     # #     # #    ## #     # 
+    #    ####### #######  #####  #     # #     # #######\n''')
   while True:
     userChoice = ["Travel the trail","Learn about the trail", "Quit"]
     choice = menu_options(userChoice)
@@ -51,29 +51,29 @@ def title_screen():
 
 def learn():
     pages = [
-'''' ___                               _____          _ _ 
- / _ \ _ __ ___  __ _  ___  _ __   |_   _| __ __ _(_) |
-| | | | '__/ _ \/ _` |/ _ \| '_ \    | || '__/ _` | | |
-| |_| | | |  __/ (_| | (_) | | | |   | || | | (_| | | |
- \___/|_|  \___|\__, |\___/|_| |_|   |_||_|  \__,_|_|_|
-                |___/          ''',
-"\nTry taking a journey by covered wagon across 2000 miles of plains, rivers, and mountains. Try! On the plains, will you slosh your oxen through mud and water-filled ruts or will you plod through dust six inches deep?",
-#second page
-'''\nHow will you cross the rivers? If have money, you might take a ferry (if there is one).
-Or, you can ford the river and hope oyu and your wagon aren't swallowed alive!''',
-#third page
-'''\nWhat about supplies? Well, if you're low on food you can hunt.
-You might get a buffalo...
-You might. And there are bears in the mountains.''',
-#fourth page
-'''\nAt the Dalles, you can try navigating the Columbia River, but if running the rapids with a makeshift raft makes you queasy,
-better take the Barlow Road.''',
-#fifth page
-'''\nIf for some reason you don't survive -- your wagon burns, or thieves steal your oxen, or you run out of provisions, die of Covid-19,
-don't give up! Try again... and again... and again utnil your name is up there with the pro's.''',
-#sixth page (credits)
-'''\nThis game was re-made by:
-	Abram and Brady''']
+    '''' ___                               _____          _ _ 
+    / _ \ _ __ ___  __ _  ___  _ __   |_   _| __ __ _(_) |
+    | | | | '__/ _ \/ _` |/ _ \| '_ \    | || '__/ _` | | |
+    | |_| | | |  __/ (_| | (_) | | | |   | || | | (_| | | |
+    \___/|_|  \___|\__, |\___/|_| |_|   |_||_|  \__,_|_|_|
+                    |___/          ''',
+    "\nTry taking a journey by covered wagon across 2000 miles of plains, rivers, and mountains. Try! On the plains, will you slosh your oxen through mud and water-filled ruts or will you plod through dust six inches deep?",
+    #second page
+    '''\nHow will you cross the rivers? If have money, you might take a ferry (if there is one).
+    Or, you can ford the river and hope oyu and your wagon aren't swallowed alive!''',
+    #third page
+    '''\nWhat about supplies? Well, if you're low on food you can hunt.
+    You might get a buffalo...
+    You might. And there are bears in the mountains.''',
+    #fourth page
+    '''\nAt the Dalles, you can try navigating the Columbia River, but if running the rapids with a makeshift raft makes you queasy,
+    better take the Barlow Road.''',
+    #fifth page
+    '''\nIf for some reason you don't survive -- your wagon burns, or thieves steal your oxen, or you run out of provisions, die of Covid-19,
+    don't give up! Try again... and again... and again utnil your name is up there with the pro's.''',
+    #sixth page (credits)
+    '''\nThis game was re-made by:
+        Abram and Brady''']
 
     
     for page in pages:
@@ -94,13 +94,31 @@ def family_Setup(question):
   return fam_list, wagonLeader
 
 def play():
-  money = 0
-  prof = ""
-  listOfProfs = ["Banker","Carpenter","Farmer","Learn the difference"]
-  money,prof = char_creator(listOfProfs)
-  print(money, prof)
-  family_Setup("How many family members do you have?: ")
-  shop(money)
+
+    START_DATE = datetime.datetime(1848,3,1)
+    currentDate = START_DATE
+    hp = 100
+    ox = 0
+    totalMiles = 2000
+    food = 0
+    milesTraveled = 0
+    rations = "full"
+    healthCondtition = "good"
+    weather = "cold"
+    pace = "normal"
+    famList = []
+    money = 0
+    prof = ""
+    listOfProfs = ["Banker","Carpenter","Farmer","Learn the difference"]
+    money,prof = char_creator(listOfProfs)
+    famList,wagonLeader = family_Setup("How many family members do you have?: ")
+    ox,food,ammo,clothes = shop(money)
+    while totalMiles > 0 and len(famList) > 0 :
+        ox,food,pace,hp,weather,healthCondition,famList,rations,milesTraveled,totalMiles,currentDate = turn(ox,food,pace,hp,weather,healthCondtition,famList,rations,milesTraveled,totalMiles,currentDate)
+    if totalMiles <=0:
+        print("Congrats you made it")
+    else:
+        print("You and your family have died and are now being eaten by animals")
   
 
 
@@ -121,16 +139,16 @@ def char_creator(options):
       break
     if choice == 4:
       print(#info on profs
-'''\nTravelling to Oregon isn't easy!
-But if you're a banker, you'll have more money for supplies
-and services than a carpenter
-or a farmer.
-\nHowever, the harder you have
-to try, the more points you
-deserve! Therefore, the
-farmer earns the greatest
-number of points and the
-banker earns the least.\n''')
+    '''\nTravelling to Oregon isn't easy!
+    But if you're a banker, you'll have more money for supplies
+    and services than a carpenter
+    or a farmer.
+    \nHowever, the harder you have
+    to try, the more points you
+    deserve! Therefore, the
+    farmer earns the greatest
+    number of points and the
+    banker earns the least.\n''')
     input("Press enter to go back to pick your profession")
 
   return money, prof
@@ -244,7 +262,7 @@ def shop(money):
                 print(str.format("You bought {} Oxen, {}lbs of Food, {} Bullets, {} Clothes.",oxen,food,ammo,clothes))
                 return oxen,food,ammo,clothes
             else:
-                input("You've spent too much money, press enter to retry!")
+                input("You've spent too much money, press enter to retry!")#if they overspent it will tell them to re-buy evrything they need but not go over budget
                 oxen = 0
                 food = 0
                 ammo = 0
@@ -255,37 +273,43 @@ def shop(money):
 
 
 def travel (health, pace, weather):
-  if pace == normal:
     mph = 2
-  if pace == slow:
-    mph = 1
-  if pace == fast:
-    mph = 4
-  if health == poor:
-    hours = 4
-  if health == fair:
-    hours = 6
-  if health == good:
     hours = 8
-  if weather == hot:
-    # something 1
-    pass
-  if weather == cold:
-    # something .75
-    pass
-  if weather == rain:
-    # .5
-    pass
-  if weather == blizzard:
-    # 0
-    pass
+    weatherMod = 1
+    if pace == "normal":
+        mph = 2
+    elif pace == "slow":
+        mph = 1
+    elif pace == "fast":
+        mph = 4
+    if health == "poor":
+        hours = 4
+    elif health == "fair":
+        hours = 6
+    elif health == "good":
+        hours = 8
+    if weather == "hot":
+        weatherMod = 1
+
+    elif weather == "cold":
+        weatherMod = .75
+
+    elif weather == "rain":
+        weatherMod = .5
+
+    elif weather == "blizzard":
+        weatherMod = 0
+
+    miles = mph*hours*weatherMod
+    return miles
+    
 
 def change_rations(rations):
-  print("Your current rations are ", pace)
+  print("Your current rations are ", rations)
   options = ["full", "half", "quarter"]
   index = 1
   for options in options:
-    print(str.format("{}        {} ",index, option))
+    print(str.format("{}        {} ",index, options))
     index+=1
   while True:
     choice = int(input("Choose your rations"))
@@ -300,14 +324,13 @@ def change_rations(rations):
 
 
 
-def change_rations():
-  pass
+
 def change_pace(pace):
   print("Your current pace is ", pace)
   options = ["slow", "normal", "fast"]
   index = 1
   for options in options:
-    print(str.format("{}        {} ",index, option))
+    print(str.format("{}        {} ",index, options))
     index+=1
   while True:
     choice = int(input("Choose your pace"))
@@ -319,28 +342,9 @@ def change_pace(pace):
       return "fast"
     else: 
       print("Not an option")
-pace = "normal"
-rations = "full"
-rations = change_rations()
-pace = change_pace(pace)
-print(pace)
 
-
-START_DATE = datetime.datetime(1848,3,1)
-currentDate = START_DATE
-hp = 100
-ox = shop(oxen)
-totalMiles = 2000
-food = shop(food)
-milesTraveled = 0
-rations = "full"
-healthCondtition = "good"
-weather = "cold"
-pace = "normal"
-famList = []
-
-def turn(ox,food,pace,weather,healthCondition,famList,rations,milesTraveled,totalMiles,hp,currentDate):
-    weather = random.choice(["hot","good","fair","fair","poor","windy","rain","blizzard"])
+def turn(ox,food,pace,hp,weather,healthCondtition,famList,rations,milesTraveled,totalMiles,currentDate):
+    weather = random.choice(["hot","good","fair","poor","windy","rain","blizzard"])
 
     if hp >= 80:
         healthCondition = "good"
@@ -356,7 +360,6 @@ def turn(ox,food,pace,weather,healthCondition,famList,rations,milesTraveled,tota
     else:
         rationsMod = .5
 
-    problem = random.choice([])
 
     num = random.randint(1,100)
     if num >= 90:
@@ -369,9 +372,10 @@ def turn(ox,food,pace,weather,healthCondition,famList,rations,milesTraveled,tota
 
     if problem == "a member of your party got lost":
         lost = random.randint(1,7)
-        print("name got lost for",lost,"days")
+        name = random.choice(famList)
+        print(name+" got lost for",lost,"days")
         currentDate += datetime.timedelta(days=lost)
-        food -= (len(famlist))*rationsMod*lost
+        food -= (len(famList))*rationsMod*lost
     elif problem == "a member of your party got a snake bite":
         hp -= 50
     elif problem == "a member of your party got sick":
@@ -408,7 +412,7 @@ def turn(ox,food,pace,weather,healthCondition,famList,rations,milesTraveled,tota
 ;;;;;;;;;;;;;;,;;:::;;;::;,,;;;;::;;;;;;;;;;;;;;;;;;;;;;;;;;;,;;;;;;;;;;;;;;;;;;,;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;,;::::;;;:;;;;;;;:::;;;;;;;;;;;;;;;;;;;;;;;;;,;;,;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
 ;;;;;;;;;;;;;;;;;:::;;;::;;;;;;;::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,;;;;;;;;;;;;;;;;;
-""",date,weather,health,miles_travled,total_miles,food))
+""",currentDate,weather,healthCondition,milesTraveled,totalMiles,food))
     options = ["Continue on Trail",
                "Check Supplies",
                "Change Pace",
@@ -418,19 +422,23 @@ def turn(ox,food,pace,weather,healthCondition,famList,rations,milesTraveled,tota
                "Hunt for Food"]
     #will see what the user wants to do
     while True:
-        menu_options("What would you like to do?")
+        choice = menu_options(options)
         if choice == 1:
             if ox > 0:
                 milesTraveled = travel(pace,weather,healthCondition)
+                print(milesTraveled)
                 if food > 0:
                     food -= (len(famList)+1)*rationsMod
                 else:
                     hp -= 10*len(famList)
-                currentDate += datetime/timedelta(days=1)
+                currentDate += datetime.timedelta(days=1)
                 totalMiles -= milesTraveled
                 break
+            else:
+                print("You have no oxen, try to trade")
         elif choice == 2:
-            check_supplies()
+            pass
+            #check_supplies()
         elif choice == 3:
             pace = change_pace(pace)
             break
@@ -438,13 +446,14 @@ def turn(ox,food,pace,weather,healthCondition,famList,rations,milesTraveled,tota
             rations = change_rations(rations)
             break
         elif choice == 5:
-            hp, daysRested = rest(hp,rations)
-            if food > 0:
-                food -= ((len(famList)+1)*rationsMod)*daysRested
-            else:
-                hp -= 10*len(famList)
-            currentDate += datetime.timedelta(days=daysRested)
-            break
+            pass
+            #hp, daysRested = rest(hp,rations)
+            #if food > 0:
+                #food -= ((len(famList)+1)*rationsMod)*daysRested
+            #else:
+                #hp -= 10*len(famList)
+            #currentDate += datetime.timedelta(days=daysRested)
+            #break
         elif choice == 6:
             pass
         elif choice == 7:
@@ -459,10 +468,10 @@ def turn(ox,food,pace,weather,healthCondition,famList,rations,milesTraveled,tota
         food = 0
     if totalMiles < 0:
         totalMiles = 0
-    return ox,food,pace,hp,food,weather,healthCondition,famList,rations,milesTraveled,totalMiles,currentDate
+    return ox,food,pace,hp,weather,healthCondition,famList,rations,milesTraveled,totalMiles,currentDate
 
     
-input()
+
 
 
     
@@ -478,9 +487,5 @@ input()
 ##main game  
 title_screen()
 #game loop
-while totalMiles > 0 and len(famList) > 0 :
-    tox,food,pace,hp,food,weather,healthCondition,famList,rations,milesTraveled,totalMiles,currentDate = turn
-if totalMiles <=0:
-    print("Congrats you made it")
-else:
-    print("You and your family have died and are now being eaten by animals")
+
+
