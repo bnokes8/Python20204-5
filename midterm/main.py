@@ -72,9 +72,9 @@ def question_block(file):
     
 def welcome(name,title,time):
     """welcome the player."""
-    print("Welcome"+name+"to your MidTerm\n")
-    print("Your test was created by"+title)
-    print("Your test was started at"+time)
+    print("Welcome "+name+" to your MidTerm\n")
+    print("Your test was created by "+title)
+    print("Your test was started at "+time)
 
 
     
@@ -157,6 +157,7 @@ def report_card(name,time,score,totalQue):
     time = datetime.now()
     end_time = time.strftime("%m/%d/%y %H:%M")
     file.write("\nPercent: "+str(percentage))
+    file.write("\nLetter Grade: "+letter_grade)
     file.write("\nTest finished: "+end_time)
 
     file.close()
@@ -165,7 +166,7 @@ def report_card(name,time,score,totalQue):
 
 # main
 main(test_file)
-
+input()
 
 
 

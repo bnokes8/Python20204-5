@@ -11,7 +11,7 @@ Print statements
 Where do you put the quotations in a print statement if you are printing a string?
 On both sides of the String
 In the middle and only the middle
-You don’t need them
+You don't need them
 They go before the word print and after the word print
 1
 Everything that you want to print needs to be inside quotation marks.
@@ -22,7 +22,7 @@ Nothing you just indent what you want it do do
 You put a hashtag
 Put down a dollar sign followed by your name
 1
-A colon signals the end of an if statement’s logic.
+A colon signals the end of an if statement's logic.
 Random Question
 Who is usually the last to join the google meet?
 Brayden obviously
@@ -30,17 +30,17 @@ Mr. Broadbent
 You
 No one, they all join at the same time.
 1
-Brayden likes to forget sometimes (it’s ok)
+Brayden likes to forget sometimes (it's ok)
 Using the right syntax
 Why do you always need to put parentheses after calling a function?
 To show that it is a function and to pass in parameters when needed.
 You don't need to except when you need to pass stuff in.
 To look like a cool programmer.
-You shouldn’t or your code will break if you do.
+You shouldn't or your code will break if you do.
 1
 Parentheses show that it is a function not a variable./You also pass parameters inside of them
 Storing Data
-What do we use to store data on cimputer memory that holds a value?
+What do we use to store data on computer memory that holds a value?
 Variable
 String
 Statement
