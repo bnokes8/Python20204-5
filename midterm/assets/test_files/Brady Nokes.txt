@@ -1,0 +1,161 @@
+Brady Nokes 4_5
+Loops and how they are used
+What will happen when you put True after the loop while?
+It will loop until it is broken
+It will loop exactly 7566 times
+Syntax error
+It will loop once
+1
+While loops will run as long as the logic is true.
+Print statements
+Where do you put the quotations in a print statement if you are printing a string?
+On both sides of the String
+In the middle and only the middle
+You don’t need them
+They go before the word print and after the word print
+1
+Everything that you want to print needs to be inside quotation marks.
+If statements
+What do you put at the end of an if statements logic to show when the first line is complete?
+You put a colon (:)
+Nothing you just indent what you want it do do
+You put a hashtag
+Put down a dollar sign followed by your name
+1
+A colon signals the end of an if statement’s logic.
+Random Question
+Who is usually the last to join the google meet?
+Brayden obviously
+Mr. Broadbent
+You
+No one, they all join at the same time.
+1
+Brayden likes to forget sometimes (it’s ok)
+Using the right syntax
+Why do you always need to put parentheses after calling a function?
+To show that it is a function and to pass in parameters when needed.
+You don't need to except when you need to pass stuff in.
+To look like a cool programmer.
+You shouldn’t or your code will break if you do.
+1
+Parentheses show that it is a function not a variable./You also pass parameters inside of them
+Storing Data
+What do we use to store data on cimputer memory that holds a value?
+Variable
+String
+Statement
+Loop
+1
+We use variables to store stuff on the memory.
+Using Variables
+What will hold only true and false values?
+String
+Float
+Integer
+Boolean
+4
+Booleans only hold a 1 or 0.
+Object Oriented Programming
+What does the permission "r" do in an open file?
+Lets the program only read the file.
+Lets the program edit the program however it wants to.
+Lets the program only write to it.
+r is not a permission for files.
+1
+r means read meaning the program can only read the file.
+More OOP
+What will the permission "w" do when opening a file with python?
+It lets the program write to a file only.
+It will only read the file.
+It will not do anything because w isnt a permission.
+It will append to the file.
+1
+w stands for write.
+Object Oriented Programming
+What will happen when trying to open a file with the w permission and the file doesn't exist?
+It will make the file.
+You will get an error because it does not exist.
+Your computer will crash.
+It will loop the open file indefinetly.
+1
+When you use w the file will be made if it isnt already.
+About python the language.
+How many libraries are currently available with python 3.0?
+Thousands if not tens of thousands.
+Ten, only ten.
+A couple but you have to be a wizard to access them.
+There arent any yet.
+1
+With Python, you have access to around 137000 libraries due to it being a popular language.
+Opening and closing a file in python.
+What should you always do at the end of a program if youve opened a file? 
+You should close the file with the .close() feature to make sure it doesnt corrupt.
+Make sure the file is always open.
+Nothing, python does everything it needs to.
+print at least 3 lines of the file.
+1
+Closing the file before your program will ensure that the file doesn't corrupt.
+Different types of data types.
+What data type should a whole number be stored in?
+String
+Integer
+boolean
+float
+2
+A integer will hold only a whole number without a decimal.
+Tab sizing and python use.
+What is the most common and suggested tab size for python?
+4 spaces!
+only 1 space as to not confuse anyone.
+3
+8
+1
+The tab size that is most used and we use is 4. It is the community standard
+Python the language
+What inspired the name python to Guido Van Rossum?
+He was watching a monty python marathon and came up with the name python.
+He had a pet python.
+It was the first word to come to his mind.
+He didn't pick it, his mom did.
+1
+Rossum was watching the monty python marathon and decided to name it python.
+The creation of python.
+What was the name of the guy who created Python?
+Guido Van Rossum
+Monty Python
+Billy
+Jack Dorsey
+1
+Guido Van Rossum created python in the early 90s.
+Importing libraries
+What does the import function do?
+It allows the programmer to import a library from python.
+It collects information from the user.
+It only lets you See the python zen.
+It is a data type.
+1
+import lets the user get different libraries to help their code.
+The input function and it's uses.
+What is the function that allows the programmer to collect info from the user?
+input
+print
+collect
+type
+1
+input allows a user to input stuff into the program.
+Importing with python
+What do you have to do import the Python Zen?
+import this
+print zen
+bring zen
+nothing, its built in.
+1
+import this will import the python zen.
+Python Zen
+What do you have to print to display the python zen?
+print(this)
+import import this
+display(this)
+catch(this)
+1
+Printing (this) will display the Python Zen. 

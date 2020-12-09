@@ -1,4 +1,4 @@
-# Oregon Trail by Abram and Brady
+0# Oregon Trail by Abram and Brady
 # 11/3/20
 # title screen that shows creators and copyright
 
@@ -81,7 +81,7 @@ def learn():
         input("\nPress enter to go to the next page")
 
 
-
+# family setup will let the user set up their family
 def family_Setup(question):
   wagonLeader = get_good_name("What is your name?: ")
   fam_list = []
@@ -93,6 +93,7 @@ def family_Setup(question):
       fam_list.append(name)
   return fam_list, wagonLeader
 
+# play function that stores all of the main variables needed to start the game
 def play():
 
     START_DATE = datetime.datetime(1848,3,1)
@@ -121,7 +122,7 @@ def play():
         print("You and your family have died and are now being eaten by animals")
   
 
-
+# lets the user create their character, selecting the profession and the amount of money
 def char_creator(options):
   while True:
     choice = menu_options(options)
@@ -152,6 +153,7 @@ def char_creator(options):
     input("Press enter to go back to pick your profession")
 
   return money, prof
+# makes sure that the name the user chose will work and is not too short or a number
 def get_good_name(question):
     while True:
         name = input(question)
@@ -161,7 +163,7 @@ def get_good_name(question):
             return name
             break
 
-# NEED TO FINISH FIXING THE ERRORS
+# makes sure that any number the user puts in will be an actual number that the game uses
 def get_good_number(question,low,high):
     while True:
         number = input(question)
@@ -171,6 +173,7 @@ def get_good_number(question,low,high):
                 return number
         print ("not a good number")
 
+#main shop function. lets the user purchase what they need to travel the trail]
 def shop(money):
     ammo = 0
     food = 0
@@ -271,7 +274,7 @@ def shop(money):
                 cost = 0
                 spentOnItems = [0.00,0.00,0.00,0.00,0.00,bill]
 
-
+# travel function lets the user travel a certain amount of miles depending on health and weather.
 def travel (health, pace, weather):
     mph = 2
     hours = 8
@@ -303,7 +306,7 @@ def travel (health, pace, weather):
     miles = mph*hours*weatherMod
     return miles
     
-
+# lets the user change their rations to either conserve food or help with health
 def change_rations(rations):
   print("Your current rations are ", rations)
   options = ["full", "half", "quarter"]
@@ -326,7 +329,7 @@ def stop_rest():
     
 
 
-
+# allows the user to change the pace of their wagon
 def change_pace(pace):
   print("Your current pace is ", pace)
   options = ["slow", "normal", "fast"]
@@ -344,7 +347,26 @@ def change_pace(pace):
       return "fast"
     else: 
       print("Not an option")
+def rest(hp,rations,currentDate):
+    try:
+        days=  int(input("How many days would you like to rest?: "))
+        if rations == "full":
+            health_mod = 2
+        elif rations == "half":
+            health_mod = 1
+        elif rations == "quarter":
+            health_mod = .5
+        currentDay += days
+    except:
+        print("Not a good option")
+    health_gain = 10 * days * health_mod
+    if (health_gain + hp) > 100:
+        hp = 100
+    else:
+        hp += health_gain
+    return hp,currentDate
 
+# will decide the weather, if someone got sick or hurt, and the main function with ascii art     
 def turn(ox,food,pace,hp,weather,healthCondtition,famList,rations,milesTraveled,totalMiles,currentDate):
     weather = random.choice(["hot","good","fair","poor","windy","rain","blizzard"])
 
@@ -448,7 +470,7 @@ def turn(ox,food,pace,hp,weather,healthCondtition,famList,rations,milesTraveled,
             rations = change_rations(rations)
             break
         elif choice == 5:
-            pass
+             rest(hp,rations,currentDate)
             #hp, daysRested = rest(hp,rations)
             #if food > 0:
                 #food -= ((len(famList)+1)*rationsMod)*daysRested
