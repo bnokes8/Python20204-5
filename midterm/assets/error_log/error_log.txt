@@ -1,0 +1,4 @@
+[Errno 2] No such file or directory: 'assets/test_files/example.txt' 12/03/20 14:13:18
+[Errno 2] No such file or directory: 'assets/test_files/example.txt' 12/03/20 14:13:37
+[Errno 2] No such file or directory: 'assets/report_cards/Brady Nokes.txtw' 12/07/20 14:49:42
+Name: Brady NokesTime test was started: 2020-12-07 14:49:42.816199Score: 2Total Questions: 2Percent: 100.0They ended it at12/07/20 14:49:47

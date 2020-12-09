@@ -1,0 +1,10 @@
+Name = yourname
+start time = time they started the test
+total correct = 20
+total questions = 20
+% 100
+letter grade = A
+end time = time they finished
+
+
+first line in test file needs to be your name,period
