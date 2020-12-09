@@ -322,6 +322,8 @@ def change_rations(rations):
     else: 
       print("Not an option")
 
+def stop_rest():
+    
 
 
 
