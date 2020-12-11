@@ -80,12 +80,80 @@ def display_board(board):
     print("\t","-----------------")
     print(str.format("\t{}      |       {}      |       {}  ",board[6],board[7],board[8],))
 
-def human_move():
+def legal_move(board):
+    moves = []
+    for square in range(NUM_SQUARES):
+        if board[square] == EMPTY:
+            moves.append(square)
+    return moves
+    
+
+def human_move(board):
     """Get human move. to use ( move = human_move() )"""
+    legal = legal_move(board)
     move = None
-    while move == None:
+    while move not in legal:
         move = ask_number("Where will you move? (0 - 8): ",0,NUM_SQUARES)
+        if move not in legal:
+            print("\nSquare is occupied foolish0 human choose another one\n")
+    print("Fine")
     return move
+
+def winner(board):
+    """Determine the game winner"""
+    WAYS_TO_WIN = ((0,1,2), #top row
+                   (0,4,8), #diagonal
+                   (2,4,6),#diagonal
+                   (1,4,7),# middle
+                   (3,4,5),
+                   (6,7,8),
+                   (0,3,6),
+                   (2,5,8)
+                   )
+    for row in WAYS_TO_WIN:
+        if board[row[0]] == board[row[1]] == board[row[2]] != EMPTY:
+            winner = board[row[0]]
+            return winner
+    if EMPTY  not in board:
+        return TIE
+    
+    return None
+
+def computer_move(board, computer, human):
+    """Make Computer move"""
+    # make a copy to work with since function will be changing list
+    board = board[:]
+    BEST_MOVES2 = (4,0,2,6,8,1,3,5,7)
+    BEST_MOVES1 = (0,8,2,6,4,1,3,5,7)
+##    (4,1,3,5,7,0,2,6,8) unbeatable
+    print("I shall take the number", end =" ")
+    
+    # if pc can win, take that move
+    for move in legal_move(board):
+        board[move] = computer
+        if winner(board) == computer:
+            print(move)
+            return move
+        board[move] = EMPTY
+
+    #if human can win block that move
+    for move in legal_move(board):
+        board[move] = human
+        if winner(board) == human:
+            print(move)
+            return move
+        board[move] = EMPTY
+    # since no one can win on next move,pick best open square
+    if computer == X:
+        for move in BEST_MOVES1:
+            if move in legal_move(board):
+                print(move)
+                return move
+    else:
+          for move in BEST_MOVES2:
+            if move in legal_move(board):
+                print(move)
+                return move
 
 def ask_number(question,low,high):
     """ Ask for a number within a range. to use ( answer = ask_number(question,low,high) )"""
@@ -98,15 +166,29 @@ def ask_number(question,low,high):
 
 # main Game
 def main():
+    players = input("1 or 2 players")
     display_instructions()
     turn = X
     computer,human = pieces()
     board = new_board()
-    while True:
-        display_board(board)
-        move = human_move()
-        board[move] = turn
-        turn = next_turn(turn)
+    while not winner(board):
+        if players == "2":
+            display_board(board)
+            move = human_move(board)
+            board[move] = turn
+            turn = next_turn(turn)
+        else:
+            if turn == human:
+                move = human_move(board)
+                board[move] = turn
+                display_board(board)
+            else:
+                move = computer_move(board,computer,human)
+                board[move] = turn
+                display_board(board)
+            turn = next_turn(turn)
+    win = winner(board)
+    print(win)
 
 
 
