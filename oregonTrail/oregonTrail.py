@@ -33,9 +33,9 @@ def title_screen():
     #     # #     # #       #     #   # #   ##    # #     # 
     #     # #     # #       #        #   #  # #   # #     # 
     #     # #     # #       #       #     # #  #  # #     # 
-    #   #  #     # #       #       ####### #   # # #     # 
-    # #   #     # #       #     # #     # #    ## #     # 
-    #    ####### #######  #####  #     # #     # #######\n''')
+     #   #  #     # #       #       ####### #   # # #     # 
+      # #   #     # #       #     # #     # #    ## #     # 
+       #    ####### #######  #####  #     # #     # #######\n''')
   while True:
     userChoice = ["Travel the trail","Learn about the trail", "Quit"]
     choice = menu_options(userChoice)

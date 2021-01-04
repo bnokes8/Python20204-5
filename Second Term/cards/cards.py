@@ -74,30 +74,43 @@ class Deck(Hand):
             for rank in Card.RANKS:
                 self.add(Card(rank,suit))
 
-my_hand = Hand()
-yourhand = Hand()
-handslist = [my_hand,yourhand]
 
-deck = Deck()
-deck.populate()
-deck.shuffle()
-deck.deal(handslist,5)
-for hand in handslist:
-    print(hand)
+class Pos_card(Card):
 
-my_hand.give(my_hand.cards[0],yourhand)
-print("your hand")
-print(yourhand)
-#print(deck)
-#print(len(deck.cards))
-input()
-for i in range(5):
-    rank = random.choice(Card.RANKS)
-    suit = random.choice(Card.SUITS)
+    def __init__(self, rank, suit, face_up=True):
+        super(Pos_card, self).__init__(rank, suit)
+        self.is_face_up = face_up
 
-    card = Card(rank,suit)
-    my_hand.add(card)
+    def __str__(self):
+        if self.is_face_up == True:
+            rep = str.format("""
+        +----------+
+        | {0:<2}{1}      |
+        |          |
+        |          |
+        |          |
+        |       {1}{0:>2}|
+        +----------+
 
+        """, self.rank, self.suit)
+        else:
+            rep = str.format("""
+                +----------+
+                |**********|
+                |**********|
+                |**********|
+                |**********|
+                |**********|
+                +----------+
 
-print(my_hand)
+                """, self.rank, self.suit)
+
+        return rep
+
+    def flip(self):
+        self.is_face_up = not self.is_face_up
+
+if __name__ == "__main__":
+    print("This is a module with classes for playing cards. not meant to be ran on its own")
+    input("\n\nPress the enter key to exit.")
 
