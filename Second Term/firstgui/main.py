@@ -10,7 +10,7 @@ root.geometry("1200x800")
 root.config(bg="red")
 root.attributes("-fullscreen" , False)
 
-frame = Frame(root)
+frame = Frame(root)/
 frame.grid()
 
 lbl = Label(frame, text="This is the best looking label ever", font='helvetica 32 bold italic')
