@@ -56,19 +56,68 @@ class Board(Canvas):
             self.gameOver()
 
     def gameOver(self):
-        pass
+        '''deletes all objects and draws game over message'''
+        self.delete(ALL)
+        self.create_text(self.winfo_width() / 2, self.winfo_height() / 2,
+                         text="Game Over with score {0}".format(self.score), fill="white")
 
     def moveSnake(self):
-        pass
+        '''moves the Snake object'''
+        body_parts = self.find_withtag("body")
+        head = self.find_withtag("head")
+
+        snake = body_parts + head
+        z = 0
+        #moving the body
+        while z < len(snake) - 1:
+            c1 = self.coords(snake[z])
+            c2 = self.coords(snake[z+1])
+            self.move(snake[z], c2[0]-c1[0], c2[1]-c1[1])
+            z += 1
+
+        #moving the head
+        self.move(head, self.moveX, self.moveY)
+
 
     def checkCollision(self):
-        pass
+        body_parts = self.find_withtag("body")
+        head = self.find_withtag("head")
+        x1, y1, x2, y2 = self.bbox(head)
+
+        overlap = self.find_overlapping(x1, y1, x2, y2)
+
+        for part in body_parts:
+            for hit in overlap:
+                if hit == part:
+                    self.inGame = False
+
+        if x1 < 0 + Cons.DOT_SIZE - 1:
+            self.inGame = False
+        if x1 > Cons.BOARD_WIDTH - Cons.DOT_SIZE * 2:
+            self.inGame = False
+        if y1 < 0 + Cons.DOT_SIZE - 1:
+            self.inGame = False
+
+        if y1 > Cons.BOARD_HEIGHT - Cons.DOT_SIZE * 2:
+            self.inGame = False
 
     def checkAppleCollision(self):
-        pass
+        apples = self.find_withtag("apple")
+        head = self.find_withtag("head")
+        x1, y1, x2, y2 = self.bbox(head)
+
+        overlap = self.find_overlapping(x1, y1, x2, y2)
+
+        for hit in overlap:
+            if apples[0] == hit:
+                self.score += 1
+                x, y = self.coords(hit)
+                self.create_image(x, y, image=self.body, anchor=NW, tag="body")
+                self.locateApple()
 
     def drawScore(self):
-        pass
+        score = self.find_withtag("score")
+        self.itemconfigure(score, text="Score: {0}".format(self.score))
 
     def onKeyPressed(self,e):
         '''controls direction variables with cursor keys'''
@@ -95,6 +144,7 @@ class Board(Canvas):
     def locateApple(self):
         '''places the apple object on Canvs'''
         apple = self.find_withtag("apple")
+        self.delete(apple[0])
         rx = random.randint(0,Cons.MAX_RANDPOS)
         ry = random.randint(0,Cons.MAX_RANDPOS)
         self.appleX = rx * Cons.DOT_SIZE
