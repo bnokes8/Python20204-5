@@ -1,3 +1,10 @@
+# ATTRIBUTIONS
+# Kids Can Code Original Game Designer (kidscancode.org)
+# Code Created by : Brady Nokes
+# Art Created by : www.kenney.nl
+#
+
+
 import pygame as pg
 import random as r
 import math
@@ -10,9 +17,15 @@ from os import *
 class Player(pg.sprite.Sprite):
     def __init__(self):
         super(Player, self).__init__()
-        self.image = pg.Surface((50, 40))
-        self.image.fill(GREEN)
+        # self.image = pg.Surface((50, 40))
+        # self.image.fill(GREEN)
+        self.image = player_img
+        self.image.set_colorkey(BLACK)
+        self.image = pg.transform.scale(self.image, (75,55))
         self.rect = self.image.get_rect()
+        self.radius = self.rect.width * .75 / 2
+        if debug:
+            pg.draw.circle(self.image, RED, self.rect.center, self.radius)
         self.rect.centerx = (WIDTH / 2)
         self.rect.bottom = (HEIGHT - (HEIGHT * .05))
         self.speedx = 0
@@ -53,9 +66,15 @@ class Player(pg.sprite.Sprite):
 class Bullet(pg.sprite.Sprite):
     def __init__(self,x,y):
         super(Bullet, self).__init__()
-        self.image = pg.Surface((5,10))
-        self.image.fill(BLUE)
+        # self.image = pg.Surface((5,10))
+        # self.image.fill(BLUE)
+        self.image = bullet_img
+        self.image.set_colorkey(BLACK)
+        self.image = pg.transform.scale(self.image, (8,50))
         self.rect = self.image.get_rect()
+        self.radius = self.rect.width * .75 / 2
+        if debug:
+            pg.draw.circle(self.image, BLUE, self.rect.center, self.radius)
         self.rect.centerx = x
         self.rect.centery = y
         self.speedy = -10
@@ -72,9 +91,17 @@ class Bullet(pg.sprite.Sprite):
 class NPC(pg.sprite.Sprite):
     def __init__(self):
         super(NPC, self).__init__()
-        self.image = pg.Surface((25, 30))
-        self.image.fill(RED)
+        # self.image = pg.Surface((25, 30))
+        # self.image.fill(RED)
+        self.image = npc_img
+
+
+        self.image.set_colorkey(BLACK)
+        self.image = pg.transform.scale(self.image,(75,75))
         self.rect = self.image.get_rect()
+        self.radius = self.rect.width * .75/2
+        if debug:
+            pg.draw.circle(self.image, RED, self.rect.center, self.radius)
         # self.rect.centerx = (WIDTH / 2)
         # self.rect.top = (0)
         self.rect.x = r.randrange(WIDTH - self.rect.width)
@@ -112,7 +139,18 @@ RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
 
+debug = False
+
 title = "Shmup"
+# FOLDER VARIABLES
+game_folder = path.dirname(__file__)
+imgs_folder = path.join(game_folder,"imgs")
+snds_folder = path.join(game_folder,"snds")
+scores_folder = path.join(game_folder,"scores")
+background_folder = path.join(imgs_folder,"backgrounds")
+player_folder = path.join(imgs_folder,"player")
+enemy_img_folder = path.join(imgs_folder,"enemies")
+#
 
 ####################################################################
 # Game Functions
@@ -134,6 +172,11 @@ clock = pg.time.Clock()
 
 # load imgs
 ####################################################################
+background = pg.image.load(path.join(background_folder,"bgpurple.png")).convert()
+bg_rect = background.get_rect()
+npc_img = pg.image.load(path.join(enemy_img_folder,"meteormedium.png")).convert()
+player_img = pg.image.load(path.join(player_folder,"playergreen.png")).convert()
+bullet_img = pg.image.load(path.join(player_folder,"bulletred.png")).convert()
 
 ####################################################################
 
@@ -197,20 +240,24 @@ while playing:
             #Player Shooting
             if event.key == pg.K_SPACE:
                 player.shoot()
+
+            if event.key == pg.K_F12:
+                debug = True
+
         if event.type == pg.QUIT:
             playing = False
 
     ##################################################
     # Update
-    ##################################################
+    ##################################################0
     # checking for hit between player and npc
 
-    hits = pg.sprite.spritecollide(player,npc_group,True)
+    hits = pg.sprite.spritecollide(player,npc_group,True,pg.sprite.collide_circle)
     if hits:
         spawn_npc()
         #playing = False
     # Bullet Hits NPC
-    hits = pg.sprite.groupcollide(npc_group, bullet_group, True, True)
+    hits = pg.sprite.groupcollide(npc_group, bullet_group, True, True,pg.sprite.collide_circle)
     for hit in hits:
         spawn_npc()
 
@@ -218,8 +265,8 @@ while playing:
     ##################################################
     # Render
     ##################################################
-
     screen.fill(BLACK)
+    screen.blit(background,bg_rect)
     all_sprites.draw(screen)
 
     pg.display.flip()
