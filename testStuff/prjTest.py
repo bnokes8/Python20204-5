@@ -17,7 +17,7 @@ print("Welcome to the game. \nWe hope you have fun. \nThe name of this book is '
 def not_known():
     notKnown = input("That is not recognized, type retry to retry or restart to go to the beginning")
     if "retry" in notKnown:
-        continue
+        page1C()
     else:
         page1C()
 def page1C() :
@@ -1172,7 +1172,7 @@ THE END	''')
     
     end51 = input("Would you like to play again or leave?")
     if "p" in end51 or "P" in end51:
-        page1C()
+        end_screen()
     elif "leave" in end51 or "Leave" in end51:
         end_screen()
     else:
@@ -1192,6 +1192,8 @@ def end_screen() :
     leaveOrNot = input("Would you like to see the credits?: ")
     if "y" in leaveOrNot or "Y" in leaveOrNot:
         credit()
+    if "end" in leaveOrNot:
+        dragon_screen()
     else:
         leave()
 page1C()

@@ -115,80 +115,80 @@ class NPC(pg.sprite.Sprite):
         #     self.speedy = 6
         #     self.speedx = 6
 
-class Player(pg.sprite.Sprite):
-    def __init__(self):
-        super(Player, self).__init__()
-        # self.image = pg.Surface((50, 50))
-        # self.image.fill(BLUE)
-        self.image = player_img
-        #self.image.set_colorkey(WHITE)
-        self.rect = self.image.get_rect()
-        self.rect.center = (WIDTH / 2, HEIGHT / 2)
-        # self.rect.center = (-25, -25)
-        self.speedx = 0
-        self.speedy = 0
-        self.key_pressed = False
-
-
-    def toggle_pressed(self):
-        self.key_pressed = False
-
-
-
-    def update(self):
-
-        # Mouse Movement
-        if mb_held == True:
-            self.rect.center = (mousex, mousey)
-        # self.rect.centerx = (mousex)
-        # self.rect.centery = (mousey)
-
-
-        # Grid Movement
-        keystate = pg.key.get_pressed()
-        # if keystate[pg.K_LEFT] and self.key_pressed == False:
-        #     self.key_pressed = True
-        #     self.rect.centerx += -50
-        # if keystate[pg.K_RIGHT] and self.key_pressed == False:
-        #     self.key_pressed = True
-        #     self.rect.centerx += 50
-        # if keystate[pg.K_DOWN] and self.key_pressed == False:
-        #     self.key_pressed = True
-        #     self.rect.centery += 50
-        # if keystate[pg.K_UP] and self.key_pressed == False:
-        #     self.key_pressed = True
-        #     self.rect.centery += -50
-        if keystate[pg.K_KP5]:
-            self.rect.center = (WIDTH/2,HEIGHT/2)
-
-
-
-        # Basic Movement
-        # self.speedx = 0
-        # self.speedy = 0
-        # keystate = pg.key.get_pressed()
-        # if keystate[pg.K_LEFT] or keystate[pg.K_a]:
-        #     self.speedx = -5
-        # if keystate[pg.K_RIGHT] or keystate[pg.K_d]:
-        #     self.speedx = 5
-        # if keystate[pg.K_DOWN] or keystate[pg.K_s]:
-        #     self.speedy = 5
-        # if keystate[pg.K_UP] or keystate[pg.K_w]:
-        #     self.speedy = -5
-        # if keystate[pg.K_KP5]:
-        #     self.rect.center = (WIDTH/2,HEIGHT/2)
-        self.rect.x += self.speedx
-        self.rect.y += self.speedy
-
-        # BIND PLAYER TO SCREEN
-        if self.rect.left <= 0:
-            self.rect.left = 0
-        if self.rect.right >= WIDTH:
-            self.rect.right = WIDTH
-        if self.rect.top <= 0:
-            self.rect.top = 0
-        if self.rect.bottom >= HEIGHT:
-            self.rect.bottom = HEIGHT
+# class Player(pg.sprite.Sprite):
+#     def __init__(self):
+#         super(Player, self).__init__()
+#         # self.image = pg.Surface((50, 50))
+#         # self.image.fill(BLUE)
+#         self.image = player_img
+#         #self.image.set_colorkey(WHITE)
+#         self.rect = self.image.get_rect()
+#         self.rect.center = (WIDTH / 2, HEIGHT / 2)
+#         # self.rect.center = (-25, -25)
+#         self.speedx = 0
+#         self.speedy = 0
+#         self.key_pressed = False
+#
+#
+#     def toggle_pressed(self):
+#         self.key_pressed = False
+#
+#
+#
+#     def update(self):
+#
+#         # Mouse Movement
+#         if mb_held == True:
+#             self.rect.center = (mousex, mousey)
+#         # self.rect.centerx = (mousex)
+#         # self.rect.centery = (mousey)
+#
+#
+#         # Grid Movement
+#         keystate = pg.key.get_pressed()
+#         # if keystate[pg.K_LEFT] and self.key_pressed == False:
+#         #     self.key_pressed = True
+#         #     self.rect.centerx += -50
+#         # if keystate[pg.K_RIGHT] and self.key_pressed == False:
+#         #     self.key_pressed = True
+#         #     self.rect.centerx += 50
+#         # if keystate[pg.K_DOWN] and self.key_pressed == False:
+#         #     self.key_pressed = True
+#         #     self.rect.centery += 50
+#         # if keystate[pg.K_UP] and self.key_pressed == False:
+#         #     self.key_pressed = True
+#         #     self.rect.centery += -50
+#         if keystate[pg.K_KP5]:
+#             self.rect.center = (WIDTH/2,HEIGHT/2)
+#
+#
+#
+#         # Basic Movement
+#         # self.speedx = 0
+#         # self.speedy = 0
+#         # keystate = pg.key.get_pressed()
+#         # if keystate[pg.K_LEFT] or keystate[pg.K_a]:
+#         #     self.speedx = -5
+#         # if keystate[pg.K_RIGHT] or keystate[pg.K_d]:
+#         #     self.speedx = 5
+#         # if keystate[pg.K_DOWN] or keystate[pg.K_s]:
+#         #     self.speedy = 5
+#         # if keystate[pg.K_UP] or keystate[pg.K_w]:
+#         #     self.speedy = -5
+#         # if keystate[pg.K_KP5]:
+#         #     self.rect.center = (WIDTH/2,HEIGHT/2)
+#         self.rect.x += self.speedx
+#         self.rect.y += self.speedy
+#
+#         # BIND PLAYER TO SCREEN
+#         if self.rect.left <= 0:
+#             self.rect.left = 0
+#         if self.rect.right >= WIDTH:
+#             self.rect.right = WIDTH
+#         if self.rect.top <= 0:
+#             self.rect.top = 0
+#         if self.rect.bottom >= HEIGHT:
+#             self.rect.bottom = HEIGHT
 
 
 def spawn_player(x,y):
@@ -236,20 +236,20 @@ mb_held = False
 #     color = (r, g, b)
 #     print(color)
 
-pg.init()
-pg.mixer.init()
-
-screen = pg.display.set_mode((WIDTH, HEIGHT))
-pg.display.set_caption(title)
-clock = pg.time.Clock()
+# pg.init()
+# pg.mixer.init()
+#
+# screen = pg.display.set_mode((WIDTH, HEIGHT))
+# pg.display.set_caption(title)
+# clock = pg.time.Clock()
 
 # Load In Images
 player_img = pg.image.load(os.path.join(player_imgs,"player.png")).convert()
 
 
 # Create Sprite Groups
-all_sprites = pg.sprite.Group()
-players_group = pg.sprite.Group()
+# all_sprites = pg.sprite.Group()
+# players_group = pg.sprite.Group()
 npc_group = pg.sprite.Group()
 
 # Create Game Objects
@@ -274,7 +274,7 @@ while running:
 
     mousex,mousey = pg.mouse.get_pos()
 
-    for event in pg.event.get():
+    # for event in pg.event.get():
 
         if event.type == pg.KEYUP:
             if event.key == pg.K_LEFT or event.key == pg.K_RIGHT:
@@ -362,7 +362,7 @@ while running:
     all_sprites.draw(screen)
 
     # LAST THING IN THE LOOP
-    pg.display.flip()
+    #pg.display.flip()
 
 
 # Exits the game when we break the loop
