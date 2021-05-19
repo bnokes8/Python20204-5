@@ -12,6 +12,7 @@ import pygame as pg
 import random as r
 import math as m
 from os import *
+import io
 ###################### imports ##########################
 
 
@@ -24,6 +25,7 @@ class Player(pg.sprite.Sprite):
         self.shield = 100
         self.fuel =100
         self.lives = 3
+        self.difficulty = 1
         self.hidden = False
         self.hide_timer = pg.time.get_ticks()
         # self.image = pg.Surface((50, 40))
@@ -56,9 +58,22 @@ class Player(pg.sprite.Sprite):
     def gun_pow(self):
         self.powerlevel+=1
         self.power_timer = pg.time.get_ticks()
+    def life_add(self):
+        if self.lives >= 4:
+            self.lives = 4
+        else:
+            self.lives += 1
+
 
     def shoot(self):
         now = pg.time.get_ticks()
+        self.shoot_delay = 250
+        if difficulty == 1:
+            self.shoot_delay = 250
+        elif difficulty == 2:
+            self.shoot_delay = 325
+        elif difficulty == 3:
+            self.shoot_delay = 400
         if (now-self.last_shot) > self.shoot_delay:
             self.last_shot = now
             if self.powerlevel == 1:
@@ -310,6 +325,7 @@ title = "Shmup"
 WIDTH = 600
 HEIGHT = 900
 FPS = 60
+difficulty = 1
 
 # Colors (R,G,B)
 BLACK = (0,0,0)
@@ -324,8 +340,8 @@ debug = False
 mouse = False
 keyboard = True
 
-powchance =["shield","gun","fuel","shield","shield","shield","fuel","fuel","fuel","fuel"]
-powTypes = ["gun","shield","fuel"]
+powchance =["shield","gun","fuel","shield","shield","shield","fuel","fuel","fuel","fuel","life","life","life","life","life","life"]
+powTypes = ["gun","shield","fuel", "life"]
 
 POWERUP_TIME = 6000
 
@@ -390,12 +406,25 @@ def show_go_screen():
     pg.display.flip()
     waiting = True
     while waiting:
+        keystate = pg.key.get_pressed()
+        difficulty = 1
         clock.tick()
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 pg.quit()
             if event.type == pg.KEYUP:
-                waiting=False
+                if keystate[pg.K_KP1]:
+                    Player.difficulty = 1
+                    waiting = False
+                if keystate[pg.K_KP2]:
+                    Player.difficulty = 2
+                    waiting = False
+                if keystate[pg.K_KP1]:
+                    Player.difficulty = 3
+                    waiting = False
+                else:
+                    Player.difficulty = 2
+                    waiting = False
 
 
 
@@ -455,6 +484,7 @@ for i in range(len(powTypes)):
     powerup_images[powTypes[i]] = pg.image.load(path.join(pows_folder,fn)).convert()
 
 
+
 ############### end load imgs ################
 
 # load sounds
@@ -467,6 +497,7 @@ for snd in ["expl3.wav","expl6.wav"]:
 shield_snd = pg.mixer.Sound(path.join(snds_folder,"Cancel - 1.wav"))
 gun_snd = pg.mixer.Sound(path.join(snds_folder,"Cancel - 2.wav"))
 fuel_snd = pg.mixer.Sound(path.join(snds_folder,"Cancel - 4.wav"))
+life_snd = pg.mixer.Sound(path.join(snds_folder,"life.wav"))
 
 pg.mixer.music.load(path.join(snds_folder,'tgfcoder-FrozenJam-SeamlessLoop.ogg'))
 pg.mixer.music.set_volume(0.2)
@@ -572,6 +603,9 @@ while playing:
         if hit.type == "fuel":
             player.fuel_add(50)
             fuel_snd.play()
+        if hit.type == "life":
+            player.life_add()
+            life_snd.play()
 
     # bullet hits NPC
     hits = pg.sprite.groupcollide(npc_group,bullet_group,True,True, pg.sprite.collide_circle)
@@ -605,7 +639,7 @@ while playing:
     draw_text(screen,"Score: "+str(score),40, WIDTH/2,15,WHITE)
     draw_bar(screen, 5, 15, player.shield, GREEN)
     draw_bar(screen, 5, 55, player.fuel, BLUE)
-    draw_lives(screen,WIDTH-100,15,player.lives,player_mini_img)
+    draw_lives(screen,WIDTH-150,15,player.lives,player_mini_img)
 
     pg.display.flip()
     ############### end Render ##################
